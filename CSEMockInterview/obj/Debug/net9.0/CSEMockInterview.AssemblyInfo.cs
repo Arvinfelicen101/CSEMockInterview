@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CSEMockInterview")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1e4f828b6125b2c0095212d52d0e8cbc6441111")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b791868e7390b893fb45de8db801ea0006806efd")]
 [assembly: System.Reflection.AssemblyProductAttribute("CSEMockInterview")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CSEMockInterview")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\csemockinterview.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\csemockinterview.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CSEMockInterview",
+              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\CSEMockInterview.csproj",
+              "RelativeDocumentMoniker": "CSEMockInterview\\CSEMockInterview.csproj",
+              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\CSEMockInterview.csproj",
+              "RelativeToolTip": "CSEMockInterview\\CSEMockInterview.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-09T06:08:06.875Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
