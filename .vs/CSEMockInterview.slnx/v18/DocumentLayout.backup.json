@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Migrations\\20251209083323_InheritIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CSEMockInterview\\Migrations\\20251209083323_InheritIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\context\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\context\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Migrations\\20251209083323_InheritIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CSEMockInterview\\Migrations\\20251209083323_InheritIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Migrations\\20251209083517_InheritIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CSEMockInterview\\Migrations\\20251209083517_InheritIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,11 +42,28 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "20251209083517_InheritIdentity.cs",
+              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Migrations\\20251209083517_InheritIdentity.cs",
+              "RelativeDocumentMoniker": "CSEMockInterview\\Migrations\\20251209083517_InheritIdentity.cs",
+              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Migrations\\20251209083517_InheritIdentity.cs",
+              "RelativeToolTip": "CSEMockInterview\\Migrations\\20251209083517_InheritIdentity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T08:35:17.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "20251209083323_InheritIdentity.cs",
               "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Migrations\\20251209083323_InheritIdentity.cs",
               "RelativeDocumentMoniker": "CSEMockInterview\\Migrations\\20251209083323_InheritIdentity.cs",
@@ -55,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Users.cs",
               "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Models\\Users.cs",
               "RelativeDocumentMoniker": "CSEMockInterview\\Models\\Users.cs",
@@ -68,7 +89,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MyDbContext.cs",
               "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Context\\MyDbContext.cs",
               "RelativeDocumentMoniker": "CSEMockInterview\\Context\\MyDbContext.cs",
@@ -81,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\appsettings.json",
               "RelativeDocumentMoniker": "CSEMockInterview\\appsettings.json",
@@ -94,7 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": ".env",
               "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\.env",
               "RelativeDocumentMoniker": "CSEMockInterview\\.env",
@@ -107,7 +128,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": ".env-sample",
               "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\.env-sample",
               "RelativeDocumentMoniker": "CSEMockInterview\\.env-sample",
@@ -115,11 +136,12 @@
               "RelativeToolTip": "CSEMockInterview\\.env-sample",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-12-09T07:37:24.675Z"
+              "WhenOpened": "2025-12-09T07:37:24.675Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Program.cs",
               "RelativeDocumentMoniker": "CSEMockInterview\\Program.cs",
