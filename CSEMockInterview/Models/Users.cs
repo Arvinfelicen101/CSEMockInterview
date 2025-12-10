@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 namespace CSEMockInterview.Models
 {
@@ -8,6 +7,9 @@ namespace CSEMockInterview.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string? MiddleName { get; set; } 
+        public string? MiddleName { get; set; }
+
+        public ICollection<UserAnswers> UserAnswersCollection { get; } = new List<UserAnswers>();
+        public ICollection<Results> ResultsCollection { get; } = new List<Results>();
     }
 }
