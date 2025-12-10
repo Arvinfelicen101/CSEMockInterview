@@ -3,28 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\context\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\context\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\services\\authentication\\authservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\services\\authentication\\authservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\controllers\\homepagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\controllers\\homepagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\dtos\\auth\\tokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\dtos\\auth\\tokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\dtos\\auth\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\dtos\\auth\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\dtos\\apiresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\dtos\\apiresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\repository\\auth\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\repository\\auth\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Migrations\\20251209083323_InheritIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CSEMockInterview\\Migrations\\20251209083323_InheritIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Migrations\\20251209083517_InheritIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CSEMockInterview\\Migrations\\20251209083517_InheritIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\context\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\context\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -33,6 +53,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\.env-sample||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\.env-sample||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|c:\\users\\asgad\\source\\repos\\csemockinterview\\csemockinterview\\migrations\\20251209083517_inheritidentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3BD19C8-FFC7-BAF5-3896-4E107F0029E7}|CSEMockInterview\\CSEMockInterview.csproj|solutionrelative:csemockinterview\\migrations\\20251209083517_inheritidentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -45,12 +69,151 @@
           "SelectedChildIndex": 4,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "CSEMockInterview\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Properties\\launchSettings.json*",
+              "RelativeToolTip": "CSEMockInterview\\Properties\\launchSettings.json*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-10T13:25:31.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthServices.cs",
+              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Services\\Authentication\\AuthServices.cs",
+              "RelativeDocumentMoniker": "CSEMockInterview\\Services\\Authentication\\AuthServices.cs",
+              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Services\\Authentication\\AuthServices.cs*",
+              "RelativeToolTip": "CSEMockInterview\\Services\\Authentication\\AuthServices.cs*",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACgAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T14:15:23.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TokenDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\DTOs\\Auth\\TokenDTO.cs",
+              "RelativeDocumentMoniker": "CSEMockInterview\\DTOs\\Auth\\TokenDTO.cs",
+              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\DTOs\\Auth\\TokenDTO.cs*",
+              "RelativeToolTip": "CSEMockInterview\\DTOs\\Auth\\TokenDTO.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T14:12:40Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "HomePageController.cs",
+              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Controllers\\HomePageController.cs",
+              "RelativeDocumentMoniker": "CSEMockInterview\\Controllers\\HomePageController.cs",
+              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Controllers\\HomePageController.cs*",
+              "RelativeToolTip": "CSEMockInterview\\Controllers\\HomePageController.cs*",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T15:02:42.209Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Program.cs",
+              "RelativeDocumentMoniker": "CSEMockInterview\\Program.cs",
+              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Program.cs",
+              "RelativeToolTip": "CSEMockInterview\\Program.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T07:34:40.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\DTOs\\Auth\\LoginDTO.cs",
+              "RelativeDocumentMoniker": "CSEMockInterview\\DTOs\\Auth\\LoginDTO.cs",
+              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\DTOs\\Auth\\LoginDTO.cs*",
+              "RelativeToolTip": "CSEMockInterview\\DTOs\\Auth\\LoginDTO.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T14:06:53.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "APIResponseDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\DTOs\\APIResponseDTO.cs",
+              "RelativeDocumentMoniker": "CSEMockInterview\\DTOs\\APIResponseDTO.cs",
+              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\DTOs\\APIResponseDTO.cs*",
+              "RelativeToolTip": "CSEMockInterview\\DTOs\\APIResponseDTO.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T15:10:52.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuthRepository.cs",
+              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Repository\\Auth\\AuthRepository.cs",
+              "RelativeDocumentMoniker": "CSEMockInterview\\Repository\\Auth\\AuthRepository.cs",
+              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Repository\\Auth\\AuthRepository.cs*",
+              "RelativeToolTip": "CSEMockInterview\\Repository\\Auth\\AuthRepository.cs*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T14:26:20.747Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Users.cs",
+              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Models\\Users.cs",
+              "RelativeDocumentMoniker": "CSEMockInterview\\Models\\Users.cs",
+              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Models\\Users.cs",
+              "RelativeToolTip": "CSEMockInterview\\Models\\Users.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T08:11:21.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MyDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Context\\MyDbContext.cs",
+              "RelativeDocumentMoniker": "CSEMockInterview\\Context\\MyDbContext.cs",
+              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Context\\MyDbContext.cs",
+              "RelativeToolTip": "CSEMockInterview\\Context\\MyDbContext.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAuwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T07:56:31.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\appsettings.json",
+              "RelativeDocumentMoniker": "CSEMockInterview\\appsettings.json",
+              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\appsettings.json",
+              "RelativeToolTip": "CSEMockInterview\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-09T07:39:42.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "20251209083517_InheritIdentity.cs",
               "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Migrations\\20251209083517_InheritIdentity.cs",
               "RelativeDocumentMoniker": "CSEMockInterview\\Migrations\\20251209083517_InheritIdentity.cs",
@@ -63,59 +226,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "20251209083323_InheritIdentity.cs",
-              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Migrations\\20251209083323_InheritIdentity.cs",
-              "RelativeDocumentMoniker": "CSEMockInterview\\Migrations\\20251209083323_InheritIdentity.cs",
-              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Migrations\\20251209083323_InheritIdentity.cs",
-              "RelativeToolTip": "CSEMockInterview\\Migrations\\20251209083323_InheritIdentity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-09T08:33:24.147Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Users.cs",
-              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Models\\Users.cs",
-              "RelativeDocumentMoniker": "CSEMockInterview\\Models\\Users.cs",
-              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Models\\Users.cs",
-              "RelativeToolTip": "CSEMockInterview\\Models\\Users.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAUAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-09T08:11:21.44Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MyDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Context\\MyDbContext.cs",
-              "RelativeDocumentMoniker": "CSEMockInterview\\Context\\MyDbContext.cs",
-              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Context\\MyDbContext.cs",
-              "RelativeToolTip": "CSEMockInterview\\Context\\MyDbContext.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwBsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-09T07:56:31.062Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\appsettings.json",
-              "RelativeDocumentMoniker": "CSEMockInterview\\appsettings.json",
-              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\appsettings.json",
-              "RelativeToolTip": "CSEMockInterview\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAB6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-12-09T07:39:42.678Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": ".env",
               "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\.env",
               "RelativeDocumentMoniker": "CSEMockInterview\\.env",
@@ -128,7 +239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": ".env-sample",
               "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\.env-sample",
               "RelativeDocumentMoniker": "CSEMockInterview\\.env-sample",
@@ -137,19 +248,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-12-09T07:37:24.675Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Program.cs",
-              "RelativeDocumentMoniker": "CSEMockInterview\\Program.cs",
-              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Program.cs",
-              "RelativeToolTip": "CSEMockInterview\\Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAABEAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-09T07:34:40.94Z",
               "EditorCaption": ""
             }
           ]
