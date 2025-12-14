@@ -52,10 +52,34 @@
               "RelativeDocumentMoniker": "CSEMockInterview\\Context\\MyDbContext.cs",
               "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Context\\MyDbContext.cs",
               "RelativeToolTip": "CSEMockInterview\\Context\\MyDbContext.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAAwCIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-09T07:56:31.062Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": ".env-sample",
+              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\.env-sample",
+              "RelativeDocumentMoniker": "CSEMockInterview\\.env-sample",
+              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\.env-sample",
+              "RelativeToolTip": "CSEMockInterview\\.env-sample",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-12-09T07:37:24.675Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Users.cs",
+              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Models\\Users.cs",
+              "RelativeDocumentMoniker": "CSEMockInterview\\Models\\Users.cs",
+              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Models\\Users.cs",
+              "RelativeToolTip": "CSEMockInterview\\Models\\Users.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T08:11:21.44Z"
             },
             {
               "$type": "Document",
@@ -82,6 +106,10 @@
               "WhenOpened": "2025-12-09T07:34:40.94Z"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": ".env",
@@ -92,34 +120,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-12-09T07:37:36.882Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": ".env-sample",
-              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\.env-sample",
-              "RelativeDocumentMoniker": "CSEMockInterview\\.env-sample",
-              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\.env-sample",
-              "RelativeToolTip": "CSEMockInterview\\.env-sample",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-12-09T07:37:24.675Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Users.cs",
-              "DocumentMoniker": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Models\\Users.cs",
-              "RelativeDocumentMoniker": "CSEMockInterview\\Models\\Users.cs",
-              "ToolTip": "C:\\Users\\ASGAD\\source\\repos\\CSEMockInterview\\CSEMockInterview\\Models\\Users.cs",
-              "RelativeToolTip": "CSEMockInterview\\Models\\Users.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-09T08:11:21.44Z"
             },
             {
               "$type": "Document",

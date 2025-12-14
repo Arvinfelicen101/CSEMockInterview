@@ -89,6 +89,10 @@
             "Scalar.AspNetCore": {
               "target": "Package",
               "version": "[2.11.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.9.3, )"
             }
           },
           "imports": [
