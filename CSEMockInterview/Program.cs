@@ -1,12 +1,28 @@
 using CSEMockInterview.Context;
 using CSEMockInterview.Models;
-using DotNetEnv;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Scalar.AspNetCore;
+using CSEMockInterview.Repository.Auth;
+using CSEMockInterview.Services.Authentication;
+using CSEMockInterview.Repository.UserManagement;
+using CSEMockInterview.Services.UserManagement;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
+
+//DI Repositories
+builder.Services.AddScoped<AuthRepository>();
+builder.Services.AddScoped<IUserManagementRepository, UserManagementRepository>();
+
+//DI Services
+builder.Services.AddScoped<AuthServices>();
+builder.Services.AddScoped<IUserManagementServices, UserManagementServices>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -29,18 +45,41 @@ builder.Services.AddIdentity<Users, IdentityRole>()
     .AddEntityFrameworkStores<MyDbContext>()
     .AddDefaultTokenProviders();
 
+var jwtConfig = builder.Configuration.GetSection("Jwt");
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidIssuer = jwtConfig["Issuer"],
+            ValidAudience = jwtConfig["Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig["Key"]))
+        };
+    });
+
+builder.Services.AddAuthorization();
+builder.Services.AddControllers();
+
 var app = builder.Build();
+
+app.MapControllers();
+
+app.MapOpenApi();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapControllers();
+
 
 app.Run();

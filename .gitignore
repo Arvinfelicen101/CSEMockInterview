@@ -13,6 +13,14 @@ out/
 packages/
 .nuget/
 
+<<<<<<< HEAD
+=======
+# Visual Studio cache/options
+.vs/
+*.user
+*.suo
+
+>>>>>>> e3d0854ec47999c4fe697b92c8343232c28091b1
 # dotenv files
 .env
 
@@ -492,3 +500,11 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Backup & temp
+*.tmp
+*.bak
+*.swp
+
+wwwroot/lib/
+wwwroot/dist/
