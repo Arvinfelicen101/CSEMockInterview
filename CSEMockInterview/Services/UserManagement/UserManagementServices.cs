@@ -16,6 +16,15 @@ namespace CSEMockInterview.Services.UserManagement
 
         public async Task<APIResponseDTO<String>> CreateUserService(RegisterDTO user)
         {
+            if (user.password != user.confirmPassword)
+            {
+                return new APIResponseDTO<string>()
+                {
+                    success = false,
+                    StatusCode = 404,
+                    message = "Password mismatched"
+                };
+            }
             try
             {
                 var userInfo = new Users()
