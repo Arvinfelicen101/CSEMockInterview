@@ -7,6 +7,12 @@ obj/
 bin/
 out/
 
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
 # Visual Studio cache/options
 .vs/
 *.user
