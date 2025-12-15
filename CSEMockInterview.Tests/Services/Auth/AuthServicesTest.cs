@@ -54,22 +54,31 @@ namespace CSEMockInterview.Tests.Services.Auth
             // ARRANGE
             var loginDto = new LoginDTO
             {
-                username = "wrong",
-                password = "wrong"
+                username = "testuser",
+                password = "password"
             };
 
-            
+            var user = new Users
+            {
+                Id = "1",
+                UserName = "testuser"
+            };
+
             _authRepoMock.Setup(r => r.CheckUserRepository(It.IsAny<Users>()))
-                    .ReturnsAsync((Users)null);
+                    .ReturnsAsync(user);
+
+            _userManagerMock.Setup(m => m.GetRolesAsync(user))
+                    .ReturnsAsync(new List<string> { "User" });
 
             // ACT
             var result = await _authService.CheckUserService(loginDto);
 
             // ASSERT
-            Assert.False(result.success);
-            Assert.Equal(401, result.StatusCode);
-            Assert.Null(result.data);
-            
+            Assert.True(result.success);
+            Assert.Equal(200, result.StatusCode);
+            Assert.NotNull(result.data);
+            Assert.False(string.IsNullOrEmpty(result.data.AccessToken));
+            Assert.False(string.IsNullOrEmpty(result.data.RefreshToken));
 
         }
     }
