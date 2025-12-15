@@ -1,6 +1,5 @@
 using CSEMockInterview.Context;
 using CSEMockInterview.Models;
-using DotNetEnv;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -9,9 +8,7 @@ using System.Text;
 using Scalar.AspNetCore;
 using CSEMockInterview.Repository.Auth;
 using CSEMockInterview.Services.Authentication;
-using CSEMockInterview.Repository;
 using CSEMockInterview.Repository.UserManagement;
-using CSEMockInterview.Services;
 using CSEMockInterview.Services.UserManagement;
 
 var builder = WebApplication.CreateBuilder(args);
