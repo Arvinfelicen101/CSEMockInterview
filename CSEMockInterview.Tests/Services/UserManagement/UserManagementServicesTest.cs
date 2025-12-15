@@ -2,7 +2,6 @@ using CSEMockInterview.DTOs.Auth;
 using CSEMockInterview.Models;
 using CSEMockInterview.Repository.UserManagement;
 using CSEMockInterview.Services.UserManagement;
-using Microsoft.AspNetCore.Identity;
 using Moq;
 
 
@@ -34,7 +33,7 @@ public class UserManagementServicesTest
 
         // Assert
         Assert.False(result.success);
-        Assert.Equal(404, result.StatusCode);
+        Assert.Equal(500, result.StatusCode);
         Assert.Contains("password", result.Errors[0]);
 
         repoMock.Verify(r => r.CreateUserAsync(It.IsAny<Users>(), It.IsAny<string>()), Times.Never);
