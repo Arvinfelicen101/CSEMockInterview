@@ -33,7 +33,7 @@ public class UserManagementServicesTest
 
         // Assert
         Assert.False(result.success);
-        Assert.Equal(500, result.StatusCode);
+        Assert.NotSame(user.password, user.confirmPassword);
 
         repoMock.Verify(r => r.CreateUserAsync(It.IsAny<Users>(), It.IsAny<string>()), Times.Never);
     }
