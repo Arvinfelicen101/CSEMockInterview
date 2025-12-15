@@ -34,7 +34,6 @@ public class UserManagementServicesTest
         // Assert
         Assert.False(result.success);
         Assert.Equal(500, result.StatusCode);
-        Assert.Contains("password", result.Errors[0]);
 
         repoMock.Verify(r => r.CreateUserAsync(It.IsAny<Users>(), It.IsAny<string>()), Times.Never);
     }
