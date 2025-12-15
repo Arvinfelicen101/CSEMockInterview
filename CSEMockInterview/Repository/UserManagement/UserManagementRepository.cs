@@ -1,9 +1,9 @@
 ﻿using CSEMockInterview.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace CSEMockInterview.Repository
+namespace CSEMockInterview.Repository.UserManagement
 {
-    public class UserManagementRepository
+    public class UserManagementRepository : IUserManagementRepository
     {
         private readonly UserManager<Users> _manager;
 
