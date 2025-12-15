@@ -1,14 +1,16 @@
 ﻿//using System;
 //using System.Collections.Generic;
 //using CSEMockInterview.Migrations;
+using CSEMockInterview.Context.Seeders;
 using CSEMockInterview.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace CSEMockInterview.Context;
 
-public partial class MyDbContext : IdentityDbContext<IdentityUser, IdentityRole, string>
+public partial class MyDbContext : IdentityDbContext<Users, IdentityRole, string>
 {
     public MyDbContext()
     {
@@ -24,6 +26,8 @@ public partial class MyDbContext : IdentityDbContext<IdentityUser, IdentityRole,
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        //Seeders.Seeders.DataSeeder(modelBuilder);
     }
 
   
