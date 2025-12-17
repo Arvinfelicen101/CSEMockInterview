@@ -12,10 +12,10 @@ namespace CSEMockInterview.Controllers
     [ApiController]
     public class HomePageController : ControllerBase
     {
-        private readonly AuthServices _service;
+        private readonly IAuthServices _service;
         private readonly IUserManagementServices _userManagement;
 
-        public HomePageController(AuthServices service, UserManagementServices userManagement)
+        public HomePageController(IAuthServices service, UserManagementServices userManagement)
         {
             _service = service;
             _userManagement = userManagement;
@@ -25,14 +25,14 @@ namespace CSEMockInterview.Controllers
         public async Task<IActionResult> Login(LoginDTO user)
         {
             var result = await _service.CheckUserService(user);
-            return StatusCode(result.StatusCode, result);
+            return Ok(result);
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDTO user)
         {
-            var result = await _userManagement.CreateUserService(user);
-            return StatusCode(result.StatusCode, result);
+            await _userManagement.CreateUserAsync(user);
+            return Ok(new { message = "User created successfully" });
         }
 
 
