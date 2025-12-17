@@ -5,5 +5,5 @@ namespace CSEMockInterview.Services.UserManagement;
 
 public interface IUserManagementServices
 {
-    Task<APIResponseDTO<String>> CreateUserService(RegisterDTO user);
+    Task CreateUserAsync(RegisterDTO user);
 }

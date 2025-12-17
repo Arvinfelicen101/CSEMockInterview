@@ -1,4 +1,5 @@
 using CSEMockInterview.DTOs.Auth;
+using CSEMockInterview.Exceptions;
 using CSEMockInterview.Models;
 using CSEMockInterview.Repository.UserManagement;
 using CSEMockInterview.Services.UserManagement;
@@ -28,11 +29,10 @@ public class UserManagementServicesTest
             confirmPassword = "Francis123?"
         };
 
-        // Act
-        var result = await service.CreateUserService(user);
+   
 
-        // Assert
-        Assert.False(result.success);
+        // Assert + act
+        await Assert.ThrowsAsync<BadRequestException>(() => service.CreateUserAsync(user));
         Assert.NotSame(user.password, user.confirmPassword);
 
         repoMock.Verify(r => r.CreateUserAsync(It.IsAny<Users>(), It.IsAny<string>()), Times.Never);
@@ -54,11 +54,9 @@ public class UserManagementServicesTest
             confirmPassword = "Francis123!"
         };
         
-        //act 
-        var result = await service.CreateUserService(user);
-        
-        //assert
-        Assert.Equal(200, result.StatusCode);
+        //assert + act
+        var exception = await Record.ExceptionAsync(() => service.CreateUserAsync(user));
+        Assert.Null(exception);
 
     }
     

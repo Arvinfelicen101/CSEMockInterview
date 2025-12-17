@@ -11,9 +11,11 @@ namespace CSEMockInterview.Repository.UserManagement
         {
             _manager = manager;
         }
-        public async Task<IdentityResult> CreateUserAsync(Users user, string password)
+        public async Task CreateUserAsync(Users user, string password)
         {
-            return await _manager.CreateAsync(user, password);
+            await _manager.CreateAsync(user, password);
         }
+        
+        
     }
 }
