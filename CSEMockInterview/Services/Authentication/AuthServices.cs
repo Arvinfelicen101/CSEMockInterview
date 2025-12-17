@@ -20,6 +20,7 @@ namespace CSEMockInterview.Services.Authentication
         public AuthServices(IAuthRepository repository, UserManager<Users> manager, IConfiguration config)
         {
             _repository = repository;
+            _manager = manager;
             _config = config;
         }
 
@@ -31,7 +32,7 @@ namespace CSEMockInterview.Services.Authentication
                 PasswordHash = user.password
             };
             var result = await _repository.CheckUserRepository(userMapping);
-            if (result != null)
+            if (result == null)
             {
                 throw new Exception("User does not exists!");
             }
