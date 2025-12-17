@@ -11,79 +11,44 @@ using System.Text;
 
 namespace CSEMockInterview.Services.Authentication
 {
-    public class AuthServices
+    public class AuthServices : IAuthServices
     {
-        private readonly AuthRepository repository;
-        private readonly UserManager<Users> manager;
-        private readonly IConfiguration config;
+        private readonly IAuthRepository _repository;
+        private readonly UserManager<Users> _manager;
+        private readonly IConfiguration _config;
 
-        public AuthServices(AuthRepository _repository, UserManager<Users> _manager, IConfiguration _config)
+        public AuthServices(IAuthRepository repository, UserManager<Users> manager, IConfiguration config)
         {
-            repository = _repository;
-            manager = _manager;
-            config = _config;
+            _repository = repository;
+            _manager = manager;
+            _config = config;
         }
 
-        public async Task<APIResponseDTO<TokenDTO>> CheckUserService(LoginDTO user)
+        public async Task<TokenDTO> CheckUserService(LoginDTO user)
         {
             var userMapping = new Users()
             {
                 UserName = user.username,
                 PasswordHash = user.password
             };
-
-            try
+            var result = await _repository.CheckUserRepository(userMapping);
+            if (result == null)
             {
-                var result = await repository.CheckUserRepository(userMapping);
-
-                if (result != null)
-                {
-                    var token = await GenerateJwtToken(result);
-
-                    APIResponseDTO<TokenDTO> ApiResponse = new APIResponseDTO<TokenDTO>()
-                    {
-                        success = true,
-                        StatusCode = 200,
-                        message = "Welcome User",
-                        data = new TokenDTO()
-                        {
-                            AccessToken = token.AccessToken,
-                            RefreshToken = token.RefreshToken
-                        }
-                    };
-
-                    return ApiResponse;
-                }
-
-                return new APIResponseDTO<TokenDTO>()
-                {
-                    success = false,
-                    StatusCode = 401,
-                    message = "User not found",
-                    Errors = new List<string> { "Invalid User" },
-                    data = null
-                };
-
-
+                throw new Exception("User does not exists!");
             }
-            catch (Exception ex)
+            var token = await GenerateJwtToken(result);
+            return new TokenDTO()
             {
-                return new APIResponseDTO<TokenDTO>()
-                {
-                    success = false,
-                    StatusCode = 500,
-                    message = "Something went wrong",
-                    Errors = new List<string> { ex.Message }
-                };
-            }
+                AccessToken = token.AccessToken,
+                RefreshToken = token.RefreshToken
+            };
+            
+
         }
-
-
-
 
         private async Task<TokenDTO> GenerateJwtToken(Users user)
         {
-            var userRoles = await manager.GetRolesAsync(user);
+            var userRoles = await _manager.GetRolesAsync(user);
 
             var claims = new List<Claim>
             {
@@ -94,16 +59,16 @@ namespace CSEMockInterview.Services.Authentication
             .Concat(userRoles.Select(role => new Claim(ClaimTypes.Role, role)))
             .ToList();
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JwtConfig:Key"]!));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtConfig:Key"]!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-          issuer: config["JwtConfig:Issuer"],
-          audience: config["JwtConfig:Audience"],
-          claims: claims,
-          expires: DateTime.UtcNow.AddMinutes(Convert.ToDouble(config["JwtConfig:ExpireMinutes"])),
-          signingCredentials: creds
-      );
+              issuer: _config["JwtConfig:Issuer"],
+              audience: _config["JwtConfig:Audience"],
+              claims: claims,
+              expires: DateTime.UtcNow.AddMinutes(Convert.ToDouble(_config["JwtConfig:ExpireMinutes"])),
+              signingCredentials: creds
+             );
 
             var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
             var refreshToken = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));

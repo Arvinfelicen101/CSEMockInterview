@@ -1,5 +1,6 @@
 ﻿using CSEMockInterview.DTOs;
 using CSEMockInterview.DTOs.Auth;
+using CSEMockInterview.Exceptions;
 using CSEMockInterview.Models;
 using CSEMockInterview.Repository.UserManagement;
 
@@ -14,58 +15,24 @@ namespace CSEMockInterview.Services.UserManagement
             _repository = repository;
         }
 
-        public async Task<APIResponseDTO<String>> CreateUserService(RegisterDTO user)
+        public async Task CreateUserAsync(RegisterDTO user)
         {
             if (user.password != user.confirmPassword)
-            {
-                return new APIResponseDTO<string>()
-                {
-                    success = false,
-                    StatusCode = 404,
-                    message = "Password mismatched"
-                };
-            }
-            try
-            {
-                var userInfo = new Users()
-                {
-                    UserName = user.username,
-                    Email = user.email,
-                    FirstName = user.firstName,
-                    MiddleName = user.middleName,
-                    LastName = user.lastName,
+                throw new BadRequestException("Password mismatched");
 
-                };
-                var identityResult = await _repository.CreateUserAsync(userInfo, user.password);
-                if (!identityResult.Succeeded)
-                {
-                    return new APIResponseDTO<string>
-                    {
-                        success = false,
-                        StatusCode = 400,
-                        message = "User creation failed",
-                        Errors = identityResult.Errors.Select(e => e.Description).ToList()
-                    };
-                }
-                return new APIResponseDTO<string>
-                {
-                    success = true,
-                    StatusCode = 200,
-                    message = "User created successfully",
-                    data = null
-                };
-            }
-            catch (Exception ex)
+            var userInfo = new Users
             {
-                return new APIResponseDTO<string>
-                {
-                    success = false,
-                    StatusCode = 500,
-                    message = "Something went wrong",
-                    Errors = new List<string> { ex.Message }
-                };
-            }
+                UserName = user.username,
+                Email = user.email,
+                FirstName = user.firstName,
+                MiddleName = user.middleName,
+                LastName = user.lastName
+            };
+
+            await _repository.CreateUserAsync(userInfo, user.password);
         }
+
+
     }
 }
 

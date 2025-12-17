@@ -5,5 +5,5 @@ namespace CSEMockInterview.Repository.UserManagement;
 
 public interface IUserManagementRepository
 {
-    Task<IdentityResult> CreateUserAsync(Users user, string password);
+    Task CreateUserAsync(Users user, string password);
 }

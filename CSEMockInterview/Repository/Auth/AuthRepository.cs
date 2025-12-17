@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace CSEMockInterview.Repository.Auth
 {
-    public class AuthRepository
+    public class AuthRepository : IAuthRepository
     {
         private readonly UserManager<Users> manager;
         public AuthRepository(UserManager<Users> userManager)

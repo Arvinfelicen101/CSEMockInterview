@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using CSEMockInterview.Middlewares;
 using Scalar.AspNetCore;
 using CSEMockInterview.Repository.Auth;
 using CSEMockInterview.Services.Authentication;
@@ -17,12 +18,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 //DI Repositories
-builder.Services.AddScoped<AuthRepository>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IUserManagementRepository, UserManagementRepository>();
 
 //DI Services
-builder.Services.AddScoped<AuthServices>();
+builder.Services.AddScoped<IAuthServices, AuthServices>();
 builder.Services.AddScoped<IUserManagementServices, UserManagementServices>();
+
+//DI Middleware
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -74,6 +79,7 @@ app.MapOpenApi();
 if (app.Environment.IsDevelopment())
 {
     app.MapScalarApiReference();
+    app.UseExceptionHandler();
 }
 
 app.UseHttpsRedirection();
