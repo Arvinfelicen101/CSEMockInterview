@@ -1,13 +1,7 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using Backend.Migrations;
-
-using Backend.Models;
-using Backend.Context.Seeders;
+﻿using Backend.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Results = Backend.Models.Results;
 using Results = Backend.Models.Results;
 
 
