@@ -15,9 +15,9 @@ public class ImporterController : ControllerBase
         _service = service;
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Importer(ImporterDTO file)
-    {
-        
-    }
+    // [HttpPost]
+    // public async Task<IActionResult> Importer(ImporterDTO file)
+    // {
+    //     return "hey";
+    // }
 }
