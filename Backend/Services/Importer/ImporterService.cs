@@ -1,4 +1,5 @@
 using Backend.Repository.Importer;
+using Backend.DTOs.Importer;
 
 namespace Backend.Services.Importer;
 
@@ -11,9 +12,8 @@ public class ImporterService : IImporterService
         _repository = repository;
     }
 
-    // public async Task<bool> CheckFileAsync(IFormFile file)
-    // {
-    //     if (file != null) return true;
-    //     return false;
-    // }
+    public async Task ParseFileAsync(ImporterDTO file)
+    {
+        // ServiceHelper.
+    }
 }
