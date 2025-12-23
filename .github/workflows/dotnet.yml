@@ -31,12 +31,15 @@ jobs:
         dotnet-version: 9.0.x
     - name: Restore dependencies
       run: dotnet restore
+      
     - name: Build
       run: dotnet build --no-restore
-    - name: Run migrations against Postgres 
-      env: 
+      
+    - name: Run migrations against Postgres
+      env:
         ConnectionStrings__DefaultConnection: "Host=localhost;Port=5432;Database=CSEMockExam;Username=postgres;Password=postgres"
-        run: dotnet ef database update --project Backend/Backend.csproj
+      run: dotnet ef database update --project Backend/Backend.csproj
+
     - name: Test
       run: dotnet test Backend.Tests/Backend.Tests.csproj --no-build --verbosity normal
 
