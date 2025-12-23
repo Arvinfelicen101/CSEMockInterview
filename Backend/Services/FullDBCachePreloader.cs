@@ -22,10 +22,8 @@ public class FullDbCachePreloader : IHostedService
     }
 
     public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
-
-    // -----------------------
+    
     // Public methods to refresh cache after CRUD
-    // -----------------------
     public async Task RefreshAllCache(CancellationToken cancellationToken = default)
     {
         using var scope = _serviceProvider.CreateScope();
