@@ -52,10 +52,10 @@ public static class ServiceHelper
                 });
             }
 
-            paragraphs.Add(new Paragraphs()
-            {
-                ParagraphText = rowData.RawParagraph
-            });
+            // paragraphs.Add(new Paragraphs()
+            // {
+            //     ParagraphText = rowData.RawParagraph
+            // });
             
             var allChoices = rowData.RawChoices.ToList();
             if (!string.IsNullOrWhiteSpace(rowData.RawAnswers))
@@ -65,6 +65,6 @@ public static class ServiceHelper
 
         }
 
-        return new MappedData(categories, paragraphs, choices);
+        return new MappedData(categories, choices);
     }
 }
