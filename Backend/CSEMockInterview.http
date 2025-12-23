@@ -1,6 +1,0 @@
-@CSEMockInterview_HostAddress = http://localhost:5140
-
-GET {{CSEMockInterview_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
