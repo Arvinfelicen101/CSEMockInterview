@@ -25,5 +25,5 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test CSEMockInterview.Tests/CSEMockInterview.Tests.csproj --no-build --verbosity normal
+      run: dotnet test Backend.Tests/Backend.Tests.csproj --no-build --verbosity normal
 
