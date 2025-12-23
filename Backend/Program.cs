@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Backend.DTOs.Importer;
 using Backend.Middlewares;
 using Scalar.AspNetCore;
 using Backend.Repository.Auth;
@@ -19,6 +20,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddMemoryCache();
+// Register our cache preloader as a hosted service
+builder.Services.AddHostedService<FullDbCachePreloader>();
 //DI Repositories
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IUserManagementRepository, UserManagementRepository>();
@@ -74,6 +77,8 @@ builder.Services.AddAuthorization();
 builder.Services.AddControllers();
 
 var app = builder.Build();
+
+
 
 app.MapControllers();
 
