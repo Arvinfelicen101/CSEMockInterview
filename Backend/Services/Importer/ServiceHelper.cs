@@ -1,7 +1,6 @@
 using Backend.DTOs.Importer;
-using Backend.Models;
 using Backend.Models.enums;
-
+using Backend.Models;
 namespace Backend.Services.Importer;
 
 public static class ServiceHelper
@@ -32,7 +31,7 @@ public static class ServiceHelper
             } else if (Enum.TryParse<Categories>(rowData.RawCategories, out var Numerical) 
                        && Numerical == Categories.Numerical)
             {
-                categories.Add(new Category()
+                categories.Add(new Models.Category()
                 {
                     CategoryName = Categories.Numerical
                 });
