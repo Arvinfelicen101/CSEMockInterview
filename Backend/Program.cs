@@ -9,9 +9,11 @@ using Backend.DTOs.Importer;
 using Backend.Middlewares;
 using Scalar.AspNetCore;
 using Backend.Repository.Auth;
+using Backend.Repository.CategoryManagement;
 using Backend.Repository.Importer;
 using Backend.Services.Authentication;
 using Backend.Repository.UserManagement;
+using Backend.Services.CategoryManagement;
 using Backend.Services.Importer;
 using Backend.Services.UserManagement;
 
@@ -26,11 +28,13 @@ builder.Services.AddHostedService<FullDbCachePreloader>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IUserManagementRepository, UserManagementRepository>();
 builder.Services.AddScoped<IImporterRepository, ImporterRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 //DI Services
 builder.Services.AddScoped<IAuthServices, AuthServices>();
 builder.Services.AddScoped<IUserManagementServices, UserManagementServices>();
 builder.Services.AddScoped<IImporterService, ImporterService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 //DI Middleware
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
