@@ -5,7 +5,6 @@ namespace Backend.Services.Importer;
 
 public static class ServiceHelper
 {
-
     public static async Task<MappedData> ImportMapper(List<RawDataDTO> list)
     {
         var categories = new List<Category>();
@@ -13,6 +12,7 @@ public static class ServiceHelper
         var choices = new List<Choices>();
         var questions = new List<Questions>();
         var subCategories = new List<SubCategories>();
+        var yearPeriod = new List<YearPeriods>();
         //fk first to be mapped, thrn implement caching
         foreach (var rowData in list)
         {
@@ -55,6 +55,22 @@ public static class ServiceHelper
             }
             
             //year period mapping
+            if (rowData.RawPeriods == Periods.First.ToString())
+            {
+                yearPeriod.Add(new YearPeriods()
+                {
+                    Year = rowData.RawYear,
+                    Periods = Periods.First
+                });
+            }
+            else
+            {
+                yearPeriod.Add(new YearPeriods()
+                {
+                    Year = rowData.RawYear,
+                    Periods = Periods.Second
+                });
+            }
             
             // paragraph mapping
             paragraphs.Add(new Paragraphs()
@@ -85,11 +101,9 @@ public static class ServiceHelper
                     ChoiceText = c.ChoiceText,
                     IsCorrect = c.IsCorrect,
                     QuestionId = 1 // data shoulbe from cache?
-                    
                 }
                 ));
             
-
         }
 
         return new MappedData(categories);
