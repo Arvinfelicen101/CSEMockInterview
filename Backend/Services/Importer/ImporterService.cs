@@ -42,13 +42,35 @@ public class ImporterService : IImporterService
                                 RawCategories = sheetName,
                                 RawQuestions = row.Cell(1).GetString(),
                                 RawSubCategories = row.Cell(2).GetString(),
-                                RawChoices = new List<string>()
+                                RawChoices = new List<ChoiceDTO>()
                                 {
-                                    row.Cell(3).GetString(),
-                                    row.Cell(4).GetString(),
-                                    row.Cell(5).GetString(),
+                                    // row.Cell(3).GetString(),
+                                    // row.Cell(4).GetString(),
+                                    // row.Cell(5).GetString(),
+                                    
+                                    new ChoiceDTO()
+                                    {
+                                        ChoiceText = row.Cell(3).GetString(),
+                                        IsCorrect = false
+                                    },
+                                    new ChoiceDTO()
+                                    {
+                                        ChoiceText = row.Cell(4).GetString(),
+                                        IsCorrect = false
+                                    },
+                                    new ChoiceDTO()
+                                    {
+                                        ChoiceText = row.Cell(5).GetString(),
+                                        IsCorrect = false
+                                    },
+                                    new ChoiceDTO()
+                                    {
+                                        ChoiceText = row.Cell(6).GetString(),
+                                        IsCorrect = true
+                                    }
+                                    
                                 },
-                                RawAnswers = row.Cell(6).GetString(),
+                            
                                 RawParagraph = row.Cell(7).GetString(),
                             });
                         }
