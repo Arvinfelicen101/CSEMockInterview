@@ -63,9 +63,6 @@ public class ImporterService : IImporterService
                                 RawSubCategories = row.Cell(2).GetString(),
                                 RawChoices = new List<ChoiceDTO>()
                                 {
-                                    // row.Cell(3).GetString(),
-                                    // row.Cell(4).GetString(),
-                                    // row.Cell(5).GetString(),
                                     
                                     new ChoiceDTO()
                                     {
@@ -104,9 +101,7 @@ public class ImporterService : IImporterService
             }
             
         }
-
         return extractedData;
     }
     
-    //create mapping for fks first
 }
