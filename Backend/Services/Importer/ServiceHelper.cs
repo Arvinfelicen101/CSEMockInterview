@@ -92,8 +92,7 @@ public static class ServiceHelper
     }
 
     //create a dto for the list of fks
-    
-    public static async Task<MappedData> ImportMapper(List<RawDataDTO> list)
+    public static async Task<MappedData> ImportMapper(List<RawDataDTO> list, FKDataDTOs dtos)
     {
         var categories = new List<Category>();
         var paragraphs = new List<Paragraphs>();
@@ -105,42 +104,44 @@ public static class ServiceHelper
         foreach (var rowData in list)
         {
             //category mapping
-            if (Enum.TryParse<Categories>(rowData.RawCategories, out var Verbal)
-                && Verbal == Categories.Verbal)
+
+            if (rowData.RawCategories == Categories.Verbal.ToString() &&
+                !(dtos.categoryFK.Any(c => c.CategoryName == rowData.RawCategories)))
             {
                 categories.Add(new Category()
                 {
                     CategoryName = Categories.Verbal
                 });
-            } else if (Enum.TryParse<Categories>(rowData.RawCategories, out var Analytical) 
-                       && Analytical == Categories.Analytical)
+            } else if (rowData.RawCategories == Categories.Analytical.ToString() &&
+                       !(dtos.categoryFK.Any(c => c.CategoryName == rowData.RawCategories)))
             {
                 categories.Add(new Category()
                 {
                     CategoryName = Categories.Analytical
                 });
-            } else if (Enum.TryParse<Categories>(rowData.RawCategories, out var Numerical) 
-                       && Numerical == Categories.Numerical)
-            {
-                categories.Add(new Models.Category()
-                {
-                    CategoryName = Categories.Numerical
-                });
-            } else if (Enum.TryParse<Categories>(rowData.RawCategories, out var Clerical) 
-                       && Clerical == Categories.Clerical)
+            } else if (rowData.RawCategories == Categories.Clerical.ToString() &&
+                       !(dtos.categoryFK.Any(c => c.CategoryName == rowData.RawCategories)))
             {
                 categories.Add(new Category()
                 {
                     CategoryName = Categories.Clerical
                 });
-            } else if (Enum.TryParse<Categories>(rowData.RawCategories, out var General) 
-                       && General == Categories.General)
+            } else if (rowData.RawCategories == Categories.General.ToString() &&
+                       !(dtos.categoryFK.Any(c => c.CategoryName == rowData.RawCategories)))
             {
                 categories.Add(new Category()
                 {
                     CategoryName = Categories.General
                 });
+            } else if (rowData.RawCategories == Categories.Numerical.ToString() &&
+                       !(dtos.categoryFK.Any(c => c.CategoryName == rowData.RawCategories)))
+            {
+                categories.Add(new Category()
+                {
+                    CategoryName = Categories.Numerical
+                });
             }
+           
             
             //year period mapping
             if (rowData.RawPeriods == Periods.First.ToString())
@@ -165,6 +166,7 @@ public static class ServiceHelper
             {
                 ParagraphText = rowData.RawParagraph,
             });
+            
             //sub category mapping
             subCategories.Add(new SubCategories()
             {
@@ -188,10 +190,9 @@ public static class ServiceHelper
                 {
                     ChoiceText = c.ChoiceText,
                     IsCorrect = c.IsCorrect,
-                    QuestionId = 1 // data shoulbe from cache?
+                    QuestionId = 1 // data should be from cache?
                 }
                 ));
-            
         }
 
         return new MappedData(categories);
