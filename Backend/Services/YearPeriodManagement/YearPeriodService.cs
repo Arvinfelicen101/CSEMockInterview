@@ -10,7 +10,7 @@ public class YearPeriodService : IYearPeriodService
     private readonly IYearPeriodRepository _repository;
     private readonly ILogger<YearPeriodService> _logger;
 
-    private const string CategoryCacheKey = "category:all";
+    private const string YearPeriodCacheKey = "YearPeriod:all";
 
     public YearPeriodService(IMemoryCache cache, IYearPeriodRepository repository, ILogger<YearPeriodService> logger)
     {
@@ -19,26 +19,27 @@ public class YearPeriodService : IYearPeriodService
         _logger = logger;
     }
 
-    public async Task<IEnumerable<CategoryDTO>> GetAllService()
+    public async Task<IEnumerable<YearPeriodDTO>> GetAllService()
     {
-        // _logger.LogInformation("Fetching all categories...");
-        if (_cache.TryGetValue(CategoryCacheKey, out List<CategoryDTO> cached))
+        _logger.LogInformation("Fetching all YearPeriod...");
+        if (_cache.TryGetValue(YearPeriodCacheKey, out List<YearPeriodDTO> cached))
         {
-            _logger.LogInformation("CATEGORY CACHE HIT");
+            _logger.LogInformation("YearPeriod CACHE HIT");
             return cached;
         }
         
-        _logger.LogInformation("Category hit missed");
+        _logger.LogInformation("YearPeriod hit missed");
         var result = await _repository.GetAllAsync();
-        var mapCategory = result.Select(c => new CategoryDTO()
+        var mapYearPeriod = result.Select(y => new YearPeriodDTO()
         {
             
-            Id = c.Id,
-            CategoryName = c.CategoryName.ToString()
+            Id = y.Id,
+            year = y.Year,
+            period = y.Periods.ToString()
         }).ToList();
         
         //set cache
-        _cache.Set(CategoryCacheKey, mapCategory,TimeSpan.FromMinutes(10));
-        return mapCategory;
+        _cache.Set(YearPeriodCacheKey, mapYearPeriod,TimeSpan.FromMinutes(10));
+        return mapYearPeriod;
     }
 }
