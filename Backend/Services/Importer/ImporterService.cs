@@ -17,7 +17,7 @@ public class ImporterService : IImporterService
         _yearPeriodService = yearPeriodService;
     }
 
-    public async Task<IEnumerable<CategoryDTO>> getCategoryFK()
+    public async Task<IEnumerable<YearPeriodDTO>> getCategoryFK()
     {
         return await _yearPeriodService.GetAllService();
     }

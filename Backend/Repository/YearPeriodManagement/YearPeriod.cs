@@ -18,8 +18,8 @@ public class YearPeriod : IYearPeriodRepository
         _logger = logger;
     }
 
-    public async Task<List<Category>> GetAllAsync()
+    public async Task<List<YearPeriods>> GetAllAsync()
     {
-        return await _context.Category.ToListAsync();
+        return await _context.YearPeriod.ToListAsync();
     }
 }

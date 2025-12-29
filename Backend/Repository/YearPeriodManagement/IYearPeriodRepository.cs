@@ -4,5 +4,5 @@ namespace Backend.Repository.YearPeriodManagement;
 
 public interface IYearPeriodRepository
 {
-    Task<List<Category>> GetAllAsync();
+    Task<List<YearPeriods>> GetAllAsync();
 }
