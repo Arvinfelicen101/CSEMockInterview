@@ -13,9 +13,9 @@ using Backend.Repository.Importer;
 using Backend.Services.Authentication;
 using Backend.Repository.UserManagement;
 using Backend.Repository.YearPeriodManagement;
-using Backend.Services.CategoryManagement;
 using Backend.Services.Importer;
 using Backend.Services.UserManagement;
+using Backend.Services.YearPeriodManagement;
 
 var builder = WebApplication.CreateBuilder(args);
 

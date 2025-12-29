@@ -2,7 +2,7 @@ using Backend.DTOs.Importer;
 using Backend.Repository.YearPeriodManagement;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace Backend.Services.CategoryManagement;
+namespace Backend.Services.YearPeriodManagement;
 
 public class YearPeriodService : IYearPeriodService
 {

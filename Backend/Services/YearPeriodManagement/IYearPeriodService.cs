@@ -1,6 +1,6 @@
 using Backend.DTOs.Importer;
 
-namespace Backend.Services.CategoryManagement;
+namespace Backend.Services.YearPeriodManagement;
 
 public interface IYearPeriodService
 {
