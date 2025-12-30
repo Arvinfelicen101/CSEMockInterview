@@ -5,13 +5,13 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace Backend.Repository.YearPeriodManagement;
 
-public class YearPeriod : IYearPeriodRepository
+public class YearPeriodManagement : IYearPeriodRepository
 {
     private readonly IMemoryCache _cache;
     private readonly MyDbContext _context;
-    private readonly ILogger<YearPeriod> _logger;
+    private readonly ILogger<YearPeriodManagement> _logger;
 
-    public YearPeriod(IMemoryCache cache, MyDbContext context, ILogger<YearPeriod> logger)
+    public YearPeriodManagement(IMemoryCache cache, MyDbContext context, ILogger<YearPeriodManagement> logger)
     {
         _cache = cache;
         _context = context;

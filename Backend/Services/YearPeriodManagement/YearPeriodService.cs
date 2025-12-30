@@ -32,7 +32,6 @@ public class YearPeriodService : IYearPeriodService
         var result = await _repository.GetAllAsync();
         var mapYearPeriod = result.Select(y => new YearPeriodDTO()
         {
-            
             Id = y.Id,
             year = y.Year,
             period = y.Periods.ToString()
