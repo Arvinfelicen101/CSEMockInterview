@@ -90,13 +90,9 @@ public static class ServiceHelper
         }
         return extractedData;
     }
+    
 
-    // public static List<Category> CategoryMapper(List<RawDataDTO> list)
-    // {
-    //     var categories = list.Select(c => c.RawCategories == )
-    // }
-
-    //create a dto for the list of fks
+    //create a dto for the list of fks, should be in service if it need to insert data
     public static async Task<MappedData> ImportMapper(List<RawDataDTO> list, FKDataDTOs dtos)
     {
         //need linq 
@@ -106,34 +102,40 @@ public static class ServiceHelper
         var questions = new List<Questions>();
         var subCategories = new List<SubCategories>();
         var yearPeriod = new List<YearPeriods>();
+        
         //fk first to be mapped, thrn implement caching
         foreach (var rowData in list)
         {
+            //create a if else cache check before mapping instead inside the mapping conditionals sp it can skip fast
             //year period mapping, needs cache, insert data right after mapping then cache it
-            if (rowData.RawPeriods == Periods.First.ToString())
+            if (!dtos.YearPeriodFK.Any(y => y.year == rowData.RawYear && y.period == rowData.RawPeriods))
             {
-                yearPeriod.Add(new YearPeriods()
+                if (rowData.RawPeriods == Periods.First.ToString())
                 {
+                    yearPeriod.Add(new YearPeriods()
+                    {
                     
-                    Year = rowData.RawYear,
-                    Periods = Periods.First
-                });
-            }
-            else
-            {
-                yearPeriod.Add(new YearPeriods()
+                        Year = rowData.RawYear,
+                        Periods = Periods.First
+                    });
+                }
+                else if (rowData.RawPeriods == Periods.Second.ToString())
                 {
-                    Year = rowData.RawYear,
-                    Periods = Periods.Second
+                    yearPeriod.Add(new YearPeriods()
+                    {
+                        Year = rowData.RawYear,
+                        Periods = Periods.Second
+                    });
+                }
+            }
+            // paragraph mapping, needs cache, insert right then cache it
+            if (!dtos.ParagraphFK.Any(p => p.ParagraphText == rowData.RawParagraph))
+            {
+                paragraphs.Add(new Paragraphs()
+                {
+                    ParagraphText = rowData.RawParagraph,
                 });
             }
-            
-            // paragraph mapping, needs cache, insert right then cache it
-            paragraphs.Add(new Paragraphs()
-            {
-                ParagraphText = rowData.RawParagraph,
-            });
-            
             //category mapping
             if (rowData.RawCategories == Categories.Verbal.ToString())
             {
@@ -147,7 +149,8 @@ public static class ServiceHelper
                     SubCategoryName = rowData.RawSubCategories,
                     CategoryId = 0,
                 });
-            } else if (rowData.RawCategories == Categories.Analytical.ToString())
+            }
+            else if (rowData.RawCategories == Categories.Analytical.ToString())
             {
                 categories.Add(new Category()
                 {
@@ -159,7 +162,8 @@ public static class ServiceHelper
                     SubCategoryName = rowData.RawSubCategories,
                     CategoryId = 1,
                 });
-            } else if (rowData.RawCategories == Categories.Clerical.ToString())
+            }
+            else if (rowData.RawCategories == Categories.Clerical.ToString())
             {
                 categories.Add(new Category()
                 {
@@ -171,7 +175,8 @@ public static class ServiceHelper
                     SubCategoryName = rowData.RawSubCategories,
                     CategoryId = 3,
                 });
-            } else if (rowData.RawCategories == Categories.General.ToString())
+            } 
+            else if (rowData.RawCategories == Categories.General.ToString())
             {
                 categories.Add(new Category()
                 {
@@ -183,41 +188,47 @@ public static class ServiceHelper
                     SubCategoryName = rowData.RawSubCategories,
                     CategoryId = 4,
                 });
-            } else if (rowData.RawCategories == Categories.Numerical.ToString())
+            } 
+            else if (rowData.RawCategories == Categories.Numerical.ToString())
             {
                 categories.Add(new Category()
                 {
                     Id = 2,
                     CategoryName = Categories.Numerical
                 });
-                subCategories.Add(new SubCategories()
+                if ()
+                {
+                    subCategories.Add(new SubCategories()
                 {
                     SubCategoryName = rowData.RawSubCategories,
                     CategoryId = 2,
                 });
+                }
+                
             }
-            
-            //questions mapping, needs to be inserted for choice insertion
+        }
+        
+        foreach (var row in list)
+        {
+            //insert fk above first before mapping
             questions.Add(new Questions()
             {
-                QuestionName = rowData.RawQuestions,
+                QuestionName = row.RawQuestions,
                 ParagraphId = 1,
-                SubCategoryId = subCategories
-                    .Where(sc => sc.SubCategoryName == rowData.RawSubCategories)
-                    .Select(s => s.Id).FirstOrDefault(),
+                SubCategoryId = 1,
                 YearPeriodId = 1,
             });
             
             //choices mapping, no need cache
-            var allChoices = rowData.RawChoices;
+            var allChoices = row.RawChoices;
             choices.AddRange(allChoices.Select(
                 c => new Choices()
                 {
                     ChoiceText = c.ChoiceText,
                     IsCorrect = c.IsCorrect,
                     QuestionId = 1 // data should be from cache?
-                }
-                ));
+                })
+            );
         }
         return new MappedData(categories);
     }
