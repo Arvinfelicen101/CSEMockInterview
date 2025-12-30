@@ -1,6 +1,7 @@
 using System.Text;
 using Backend.Repository.Importer;
 using Backend.DTOs.Importer;
+using Backend.Services.ParagraphManagement;
 using Backend.Services.YearPeriodManagement;
 using ClosedXML.Excel;
 
@@ -10,6 +11,7 @@ public class ImporterService : IImporterService
 {
     private readonly IImporterRepository _repository;
     private readonly IYearPeriodService _yearPeriodService;
+    private readonly IParagraphManagementService _paragraphService;
 
     public ImporterService(IImporterRepository repository, IYearPeriodService yearPeriodService)
     {
@@ -22,12 +24,19 @@ public class ImporterService : IImporterService
         return await _yearPeriodService.GetAllService();
     }
     
+    public async Task<IEnumerable<ParagraphDTO>> getParagraphFK()
+    {
+        return await _paragraphService.GetAllService();
+    }
+    
     public async Task ProcessFileAsync(ImporterDTO xlsx)
     {
-        var categoryData = await getCategoryFK();
+        var YearPeriodData = await getCategoryFK();
+        var ParagraphData = await getParagraphFK();
         var fkData = new FKDataDTOs()
         {
-            categoryFK = categoryData
+            YearPeriodFK = YearPeriodData,
+            ParagraphFK = ParagraphData
         };
         
         var result = await ServiceHelper.ParseFileAsync(xlsx);
