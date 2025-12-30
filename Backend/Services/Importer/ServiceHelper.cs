@@ -11,7 +11,7 @@ public static class ServiceHelper
     {
         var categories = new List<Category>();
         var paragraphs = new List<Paragraphs>();
-        var choices = new List<Choices>();
+        var choices = new List<ItemChoices>();
         //fk first to be mapped, thrn implement caching
         foreach (var rowData in list)
         {
@@ -61,7 +61,7 @@ public static class ServiceHelper
             if (!string.IsNullOrWhiteSpace(rowData.RawAnswers))
                 allChoices.Add(rowData.RawAnswers);
 
-            choices.AddRange(allChoices.Select(c => new Choices { ChoiceText = c }));
+           // choices.AddRange(allChoices.Select(c => new Choices { ChoiceText = c }));
 
         }
 

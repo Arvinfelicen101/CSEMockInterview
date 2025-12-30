@@ -25,7 +25,7 @@ public partial class MyDbContext : IdentityDbContext<Users, IdentityRole, string
     public DbSet<Paragraphs> Paragraph { get; set; }
     public DbSet<Questions> Question { get; set; }
     public DbSet<YearPeriods> YearPeriod { get; set; }
-    public DbSet<Choices> Choice { get; set; }
+    public DbSet<ItemChoices> Choice { get; set; }
     public DbSet<UserAnswers> UserAnswer { get; set; }
     public DbSet<Results> Result  { get; set; }
 
@@ -67,7 +67,7 @@ public partial class MyDbContext : IdentityDbContext<Users, IdentityRole, string
             .HasForeignKey(e => e.YearPeriodId)
             .IsRequired();
 
-        modelBuilder.Entity<Choices>()
+        modelBuilder.Entity<ItemChoices>()
             .HasMany(e => e.UserAnswersCollection)
             .WithOne(e => e.ChoicesNavigation)
             .HasForeignKey(e => e.Answer)

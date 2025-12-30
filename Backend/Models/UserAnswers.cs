@@ -11,6 +11,6 @@ public class UserAnswers
     public Questions QuestionsNavigation { get; set; }
     
     public int Answer { get; set; }
-    public Choices ChoicesNavigation { get; set; }
+    public ItemChoices ChoicesNavigation { get; set; }
    
 }
