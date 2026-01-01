@@ -2,10 +2,10 @@
     {
         public class QuestionListDTO
         {
-            public string questionName {  get; set; }
-            public int subCategoryId { get; set; }
-            public int? paragraphId { get; set; }
-            public int yearPeriodId { get; set; }
+            public string QuestionName {  get; set; }
+            public int SubCategoryId { get; set; }
+            public int? ParagraphId { get; set; }
+            public int YearPeriodId { get; set; }
       
         }
     }

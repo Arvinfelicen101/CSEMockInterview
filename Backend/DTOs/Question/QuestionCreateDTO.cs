@@ -8,20 +8,20 @@ namespace Backend.DTOs.Question
     {
 
         [Required(ErrorMessage = "Question Name is required.")]
-        public string questionName { get; set; }
+        public string QuestionName { get; set; }
 
 
         [Required(ErrorMessage = "subCategoryId is required.")]
-        public int subCategoryId { get; set; } // FK to subCategories
+        public int SubCategoryId { get; set; } // FK to subCategories
 
-        public int? paragraphId { get; set; } // FK to paragraphs
+        public int? ParagraphId { get; set; } // FK to paragraphs
 
         
         [Required(ErrorMessage = "yearPeriodId is required.")]
-        public int yearPeriodId { get; set; } // FK to yearPeriods
+        public int YearPeriodId { get; set; } // FK to yearPeriods
 
         [MinLength(2)]
-        public List<ChoiceDTO> choices { get; set; }
+        public List<ChoiceCreateDTO> Choices { get; set; }
 
 
     }

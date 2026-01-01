@@ -21,5 +21,19 @@ namespace Backend.Controllers.Choices
         //{
 
         //}
+
+        [HttpPut("{id:int}")]
+        public async Task <IActionResult> UpdateChoice(int id, ChoiceUpdateDTO dto)
+        {
+            await _service.UpdateChoiceAsync(id, dto);
+            return Ok(new { message = "Choice Updated Successfully." });
+        }
+
+        [HttpDelete]
+        public async Task <IActionResult> DeleteChoice(int id)
+        {
+            await _service.DeleteChoiceAsync(id);
+            return NoContent();
+        }
     }
 }

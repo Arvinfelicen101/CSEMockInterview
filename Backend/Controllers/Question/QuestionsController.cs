@@ -20,21 +20,21 @@ namespace Backend.Controllers.Question
         [HttpPost]
         public async Task<IActionResult> AddQuestion(QuestionCreateDTO question)
         {
-            await _service.CreateQuestionService(question);
+            await _service.CreateQuestionAsync(question);
             return StatusCode(StatusCodes.Status201Created);
         }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetQuestionById(int id)
         {
-            var question = await _service.GetQuestionByIdService(id);
+            var question = await _service.GetQuestionByIdAsync(id);
             return Ok(question);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllQuestions()
         {
-            var questions = await _service.GetAllService();
+            var questions = await _service.GetAllAsync();
             return Ok(questions);
         }
 

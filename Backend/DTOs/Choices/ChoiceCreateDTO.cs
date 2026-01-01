@@ -1,9 +1,9 @@
 ﻿namespace Backend.DTOs.Choices
 {
-    public class ChoiceDTO
+    public class ChoiceCreateDTO
     {
-        public string choiceText { get; set; }
-        public bool  isCorrect { get; set; }
+        public string ChoiceText { get; set; }
+        public bool  IsCorrect { get; set; }
   
     }
 }

@@ -3,7 +3,8 @@
     public class ChoiceReadDTO
     {
         public int Id { get; set; }
-        public string choiceText { get; set; }
-        public bool isCorrect { get; set; }
+        public string ChoiceText { get; set; }
+        public bool IsCorrect { get; set; }
+    
     }
 }

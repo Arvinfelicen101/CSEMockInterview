@@ -4,10 +4,10 @@ namespace Backend.Services.Question
 {
     public interface IQuestionService
     {
-        Task CreateQuestionService(QuestionCreateDTO question);
+        Task CreateQuestionAsync(QuestionCreateDTO question);
 
-        Task <QuestionReadDTO> GetQuestionByIdService(int id);
-        Task<List<QuestionListDTO>> GetAllService();
+        Task <QuestionReadDTO> GetQuestionByIdAsync(int id);
+        Task<List<QuestionListDTO>> GetAllAsync();
 
         Task UpdateQuestionAsync(int id, QuestionUpdateDTO question);
 

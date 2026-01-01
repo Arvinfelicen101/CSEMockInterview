@@ -27,6 +27,7 @@ namespace Backend.Repository.Question
         {
             return await _context.YearPeriod.AnyAsync(y => y.Id == id);
         }
+       
 
         public async Task<bool> ParagraphExistsAsync(int id)
         {
@@ -36,8 +37,8 @@ namespace Backend.Repository.Question
         public async Task AddQuestionAsync(Questions question)
         {
             await _context.AddAsync(question);
-            await _context.SaveChangesAsync();
-        }
+        }    
+           
 
         public async Task<QuestionReadDTO?> GetQuestionByIdAsync(int id)
         {
@@ -47,15 +48,15 @@ namespace Backend.Repository.Question
                 .Select(q => new QuestionReadDTO
                 {
                     Id = q.Id,
-                    questionName = q.QuestionName,
-                    subCategoryId = q.SubCategoryId,
-                    paragraphId = q.ParagraphId,
-                    yearPeriodId = q.YearPeriodId,
+                    QuestionName = q.QuestionName,
+                    SubCategoryId = q.SubCategoryId,
+                    ParagraphId = q.ParagraphId,
+                    YearPeriodId = q.YearPeriodId,
                     choices = q.ChoicesCollection.Select(c => new ChoiceReadDTO
                     {
                         Id = c.Id,
-                        choiceText = c.ChoiceText,
-                        isCorrect = c.IsCorrect
+                        ChoiceText = c.ChoiceText,
+                        IsCorrect = c.IsCorrect
                     }).ToList()
                 })
                 .FirstOrDefaultAsync();
@@ -67,10 +68,10 @@ namespace Backend.Repository.Question
                 .AsNoTracking()
                 .Select(q => new QuestionListDTO
                 {
-                   questionName = q.QuestionName,
-                   subCategoryId = q.SubCategoryId,
-                   paragraphId = q.ParagraphId,
-                   yearPeriodId= q.YearPeriodId
+                   QuestionName = q.QuestionName,
+                   SubCategoryId = q.SubCategoryId,
+                   ParagraphId = q.ParagraphId,
+                   YearPeriodId= q.YearPeriodId
                 })
                 .ToListAsync();
         }
@@ -85,14 +86,12 @@ namespace Backend.Repository.Question
         public async Task UpdateQuestionAsync(Questions question)
         {
             _context.Question.Update(question);
-            await _context.SaveChangesAsync();
-
+           
         }
 
         public async Task DeleteQuestionAsync(Questions question)
         {
             _context.Question.Remove(question);
-            await _context.SaveChangesAsync();
 
         }
 

@@ -4,6 +4,9 @@ namespace Backend.Services.Choices
 {
     public interface IChoiceService
     {
-        Task CreateChoiceService(ChoiceDTO choice);
+        Task CreateChoiceAsync(ChoiceCreateDTO choice);
+        Task UpdateChoiceAsync(int id, ChoiceUpdateDTO choice);
+
+        Task DeleteChoiceAsync(int id);
     }
 }

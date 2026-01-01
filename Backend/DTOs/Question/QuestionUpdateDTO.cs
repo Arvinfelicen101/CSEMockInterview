@@ -6,14 +6,13 @@ namespace Backend.DTOs.Question
     public class QuestionUpdateDTO
     {
         [Required(ErrorMessage = "Question Name is required.")]
-        public string questionName {  get; set; }
+        public string QuestionName {  get; set; }
 
         [Required(ErrorMessage = "subCategoryId is required.")]
-        public int subCategoryId { get; set; }
-        public int? paragraphId { get; set; }
+        public int SubCategoryId { get; set; }
+        public int? ParagraphId { get; set; }
 
         [Required(ErrorMessage = "yearPeriodId is required.")]
-        public int yearPeriodId { get; set; }
-        public List<ChoiceDTO> choices { get; set; }
+        public int YearPeriodId { get; set; }
     }
 }

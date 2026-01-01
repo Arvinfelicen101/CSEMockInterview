@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using Microsoft.Extensions.Caching.Memory;
 using DocumentFormat.OpenXml.Wordprocessing;
 using Backend.Services.Question.QuestionValidator;
+using Backend.Context;
 
 namespace Backend.Services.Question
 {
@@ -15,50 +16,53 @@ namespace Backend.Services.Question
         private readonly IQuestionRepository _repo;
         private readonly IMemoryCache _cache;
         private readonly IQuestionValidator _validator;
+        private readonly MyDbContext _context;
 
-        public QuestionService(IQuestionRepository repo, IMemoryCache cache, IQuestionValidator validator)
+        public QuestionService(IQuestionRepository repo, IMemoryCache cache, IQuestionValidator validator, MyDbContext context)
         {
             _repo = repo;
             _cache = cache;
             _validator = validator;
+            _context = context;
         }
-        public async Task CreateQuestionService(QuestionCreateDTO question)
+        public async Task CreateQuestionAsync(QuestionCreateDTO question)
         {
             await _validator.ValidateReferencesAsync(
-                question.subCategoryId, 
-                question.yearPeriodId,
-                question.paragraphId);
+                question.SubCategoryId, 
+                question.YearPeriodId,
+                question.ParagraphId);
 
-            if (question.choices == null || question.choices.Count < 2)
+            if (question.Choices == null || question.Choices.Count < 2)
                 throw new BadRequestException("A question must have at least 2 choices");
 
-            if(!question.choices.Any(c => c.isCorrect))
+            if(!question.Choices.Any(c => c.IsCorrect))
                 throw new BadRequestException("At least one choice must be correct");
 
             var questionInfo = new Questions
             {
-                QuestionName = question.questionName,
-                SubCategoryId = question.subCategoryId,
-                YearPeriodId = question.yearPeriodId,
-                ParagraphId = question.paragraphId,
+                QuestionName = question.QuestionName,
+                SubCategoryId = question.SubCategoryId,
+                YearPeriodId = question.YearPeriodId,
+                ParagraphId = question.ParagraphId,
             };
 
-            foreach (var choice in question.choices)
+            foreach (var choice in question.Choices)
             {
                 var choiceInfo = new ItemChoices
                 {
-                    ChoiceText = choice.choiceText,
-                    IsCorrect = choice.isCorrect,
+                    ChoiceText = choice.ChoiceText,
+                    IsCorrect = choice.IsCorrect,
                 };
 
                 questionInfo.ChoicesCollection.Add(choiceInfo);
             }
 
             await _repo.AddQuestionAsync(questionInfo);
+            await _context.SaveChangesAsync();
             _cache.Remove(CacheKeys.QuestionsAll);
         }
 
-        public async Task<QuestionReadDTO> GetQuestionByIdService(int id)
+        public async Task<QuestionReadDTO> GetQuestionByIdAsync(int id)
         {
             if (id <= 0)
                 throw new BadRequestException("Invalid ID");
@@ -71,7 +75,7 @@ namespace Backend.Services.Question
             return question;
         }
 
-        public async Task<List<QuestionListDTO>> GetAllService()
+        public async Task<List<QuestionListDTO>> GetAllAsync()
         {
             if (_cache.TryGetValue(CacheKeys.QuestionsAll, out List<QuestionListDTO> cached))
                 return cached;
@@ -94,20 +98,21 @@ namespace Backend.Services.Question
                 throw new NotFoundException("Question does not exist.");
 
             await _validator.ValidateReferencesAsync(
-                question.subCategoryId,
-                question.yearPeriodId,
-                question.paragraphId);
+                question.SubCategoryId,
+                question.YearPeriodId,
+                question.ParagraphId);
 
-            questionById.QuestionName = question.questionName;
+            questionById.QuestionName = question.QuestionName;
 
-            questionById.SubCategoryId = question.subCategoryId;
+            questionById.SubCategoryId = question.SubCategoryId;
          
-            questionById.YearPeriodId = question.yearPeriodId;
+            questionById.YearPeriodId = question.YearPeriodId;
 
-            questionById.ParagraphId = question.paragraphId;
+            questionById.ParagraphId = question.ParagraphId;
 
 
             await _repo.UpdateQuestionAsync(questionById);
+            await _context.SaveChangesAsync();
             _cache.Remove(CacheKeys.QuestionsAll);
 
         }
@@ -118,6 +123,7 @@ namespace Backend.Services.Question
             if (question == null) throw new NotFoundException("Question does not exist.");
 
             await _repo.DeleteQuestionAsync(question);
+            await _context.SaveChangesAsync();
             _cache.Remove(CacheKeys.QuestionsAll);
         }
 
