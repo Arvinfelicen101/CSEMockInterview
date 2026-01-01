@@ -1,4 +1,5 @@
 using Backend.DTOs.Importer;
+using Backend.Models;
 using Backend.Repository.ParagraphManagement;
 using Microsoft.Extensions.Caching.Memory;
 
@@ -19,21 +20,17 @@ public class ParagraphManagementService : IParagraphManagementService
         _logger = logger;
     }
 
-    public async Task<IEnumerable<ParagraphDTO>> GetAllService()
+    public async Task<IEnumerable<Paragraphs>> GetAllService()
     {
-        if (_cache.TryGetValue(ParagraphCacheKey, out IEnumerable<ParagraphDTO> cached))
+        if (_cache.TryGetValue(ParagraphCacheKey, out IEnumerable<Paragraphs> cached))
         {
             return cached;
         }
 
         var result = await _repository.GetAllAsync();
-        var mapParagraph = result.Select(p => new ParagraphDTO()
-        {
-            Id = p.Id,
-            ParagraphText = p.ParagraphText
-        }).ToList();
 
-        _cache.Set(ParagraphCacheKey, mapParagraph, TimeSpan.FromMinutes(10));
-        return mapParagraph;
+        _cache.Set(ParagraphCacheKey, result, TimeSpan.FromMinutes(10));
+        return result;
     }
+
 }
