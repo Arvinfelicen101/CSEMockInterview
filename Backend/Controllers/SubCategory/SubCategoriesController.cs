@@ -1,6 +1,7 @@
 ﻿using Backend.DTOs.SubCategory;
 using Backend.Repository.SubCategory;
 using Backend.Services.SubCategory;
+using DocumentFormat.OpenXml.Office2010.Drawing;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,5 +32,18 @@ namespace Backend.Controllers.SubCategory
             return Ok(subcategories);                                                                                                                                                                                                                                           
         }
 
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> UpdateSubCategory(int id,  SubCategoryUpdateDTO subcategoryDto)
+        {
+            await _service.UpdateSubCategoryAsync(id, subcategoryDto);
+            return Ok(new { message = "SubCategory updated successfully" });
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteSubCategory(int id)
+        {
+            await _service.DeleteSubCategoryAsync(id);
+            return NoContent();
+        }
     }
 }
