@@ -39,7 +39,7 @@ namespace Backend.Controllers.SubCategory
             return Ok(new { message = "SubCategory updated successfully" });
         }
 
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteSubCategory(int id)
         {
             await _service.DeleteSubCategoryAsync(id);

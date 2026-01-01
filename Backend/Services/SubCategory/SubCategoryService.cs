@@ -83,6 +83,7 @@ namespace Backend.Services.SubCategory
             question.CategoryId = dto.CategoryId;
 
             await _repo.UpdataSubCategoryAsync(question);
+            await _context.SaveChangesAsync();
             _cache.Remove(CacheKeys.SubCategoryAll);
         }
 
@@ -92,6 +93,7 @@ namespace Backend.Services.SubCategory
             if (question == null) throw new Exception("SubCategory does not exist");
 
             await _repo.DeleteSubCategoryAsync(question);
+            
         }
 
       

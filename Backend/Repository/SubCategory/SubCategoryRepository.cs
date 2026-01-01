@@ -61,6 +61,7 @@ namespace Backend.Repository.SubCategory
         public async Task DeleteSubCategoryAsync(SubCategories subCategory)
         {
             _context.SubCategory.Remove(subCategory);
+            await _context.SaveChangesAsync();
         }
 
         

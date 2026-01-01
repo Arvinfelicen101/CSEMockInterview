@@ -29,7 +29,7 @@ namespace Backend.Controllers.Choices
             return Ok(new { message = "Choice Updated Successfully." });
         }
 
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
         public async Task <IActionResult> DeleteChoice(int id)
         {
             await _service.DeleteChoiceAsync(id);
