@@ -7,7 +7,7 @@ public class SubCategories
     
     //Foreign key
     public int CategoryId { get; set; }
-    public required Category categoryNavigation { get; set; }
+    public Category? categoryNavigation { get; set; }
 
     public ICollection<Questions> QuestionsCollection { get; } = new List<Questions>();
 }
