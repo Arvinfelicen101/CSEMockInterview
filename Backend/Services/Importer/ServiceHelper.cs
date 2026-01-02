@@ -94,7 +94,7 @@ public static class ServiceHelper
     
 
     //create a dto for the list of fks, should be in service if it need to insert data, possible to be not. just separate method
-    public static async Task<(List<Questions>, List<Choices>)> ImportFKMapper(List<RawDataDTO> list, FKDataDTOs dtos)
+    public static (List<Questions>, List<Choices>) ImportFkMapper(List<RawDataDTO> list, FKDataDTOs dtos)
     {
         //PREPARE CACHE VARIABLES FIRST / dictionaries
         var paragraphCache = dtos.ParagraphFK.ToDictionary(p => p.ParagraphText, p => p);
