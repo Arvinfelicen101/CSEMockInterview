@@ -14,8 +14,9 @@ public class ImporterService : IImporterService
     private readonly IYearPeriodService _yearPeriodService;
     private readonly IParagraphManagementService _paragraphService;
 
-    public ImporterService(IImporterRepository repository, IYearPeriodService yearPeriodService)
+    public ImporterService(IImporterRepository repository, IYearPeriodService yearPeriodService, IParagraphManagementService paragraphManagementService)
     {
+        _paragraphService = paragraphManagementService;
         _repository = repository;
         _yearPeriodService = yearPeriodService;
     }
@@ -47,7 +48,7 @@ public class ImporterService : IImporterService
     {
         var fkData = await ExistingCache();
         var result = await ServiceHelper.ParseFileAsync(xlsx);
-        var mappeddata = await ServiceHelper.ImportFKMapper(result, fkData);
+        var mappeddata = ServiceHelper.ImportFkMapper(result, fkData);
         
         
     }
