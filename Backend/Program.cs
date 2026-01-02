@@ -14,7 +14,6 @@ using Backend.Services.Question;
 using Backend.Services.Question.QuestionValidator;
 using Backend.Services.SubCategory;
 using Backend.Services.UserManagement;
-using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
