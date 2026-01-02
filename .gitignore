@@ -13,14 +13,14 @@ out/
 packages/
 .nuget/
 
-<<<<<<< HEAD
-=======
 # Visual Studio cache/options
 .vs/
 *.user
 *.suo
 
->>>>>>> e3d0854ec47999c4fe697b92c8343232c28091b1
+# global json
+global.json
+
 # dotenv files
 .env
 

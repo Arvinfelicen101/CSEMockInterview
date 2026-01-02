@@ -15,6 +15,8 @@ namespace CSEMockInterview.Context.Seeders
                 new Category { Id = 4, CategoryName = Categories.Numerical },
                 new Category { Id = 5, CategoryName = Categories.General }
             );
+
+            //category
         }
     }
 }
