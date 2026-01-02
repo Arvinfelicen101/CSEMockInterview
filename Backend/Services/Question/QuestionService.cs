@@ -48,7 +48,7 @@ namespace Backend.Services.Question
 
             foreach (var choice in question.Choices)
             {
-                var choiceInfo = new ItemChoices
+                var choiceInfo = new Choices
                 {
                     ChoiceText = choice.ChoiceText,
                     IsCorrect = choice.IsCorrect,

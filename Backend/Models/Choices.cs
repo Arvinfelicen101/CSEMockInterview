@@ -1,6 +1,6 @@
 namespace Backend.Models;
 
-public class ItemChoices
+public class Choices
 {
     public int Id { get; set; }
     public string ChoiceText { get; set; }

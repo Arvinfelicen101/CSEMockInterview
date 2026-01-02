@@ -1,11 +1,9 @@
-﻿using Backend.DTOs.Choices;
-using Backend.Repository.Choices;
-using DocumentFormat.OpenXml.Presentation;
+﻿using Backend.Context;
+using Backend.DTOs.Choices;
 using Backend.Exceptions;
-using System.Runtime.InteropServices;
-using Backend.Context;
+using Backend.Repository.ChoicesManagement;
 
-namespace Backend.Services.Choices
+namespace Backend.Services.ChoicesManagement
 {
     public class ChoiceService : IChoiceService
     {
