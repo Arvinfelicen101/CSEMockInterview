@@ -6,7 +6,7 @@ public class Questions
     public required string QuestionName { get; set; }
     
     //Foreign Keys
-    public int ParagraphId { get; set; }
+    public int? ParagraphId { get; set; }
     public Paragraphs? ParagraphNavigation { get; set; }
     
     public int SubCategoryId { get; set; }
