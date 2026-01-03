@@ -59,8 +59,9 @@ public class ImporterService : IImporterService
         var fkData = await ExistingCache();
         var result = await ServiceHelper.ParseFileAsync(xlsx);
         var mappeddata = ServiceHelper.ImportFkMapper(result, fkData);
-        
-        
+
+        await _repository.AddAsync(mappeddata.Item1, mappeddata.Item2);
+
     }
     
     
