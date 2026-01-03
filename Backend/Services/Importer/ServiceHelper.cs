@@ -85,7 +85,7 @@ public static class ServiceHelper
             }
             catch (Exception e)
             {
-                throw new Exception();
+                throw new InvalidOperationException("Failed to retrieve DTO list.", e);
             }
             
         }
@@ -108,22 +108,24 @@ public static class ServiceHelper
             ["Clerical"] = 4,
             ["General"] = 5
         };
-        //need linq 
         var questions = new List<Questions>();
         var choices = new List<Choices>();
         
         
         foreach (var rowData in list)
         {
-            //just check every fk if it exist or not in the cache
+            var rawParagraph = rowData.RawParagraph;
 
-            if (!paragraphCache.TryGetValue(rowData.RawParagraph, out var paragraph))
+            if (string.IsNullOrWhiteSpace(rawParagraph))
+                continue;
+            
+            if (!paragraphCache.TryGetValue(rawParagraph, out var paragraph))
             {
                 paragraph = new Paragraphs()
                 {
-                    ParagraphText = rowData.RawParagraph
+                    ParagraphText = rawParagraph
                 };
-                paragraphCache[rowData.RawParagraph] = paragraph;
+                paragraphCache[rawParagraph] = paragraph;
             }
            
             if (!yearPeriodCache.TryGetValue((rowData.RawYear, Enum.TryParse<Periods>(rowData.RawPeriods, true, out var period) ? period : default), out var yearPeriods))
