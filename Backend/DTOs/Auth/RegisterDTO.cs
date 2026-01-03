@@ -31,6 +31,6 @@ namespace Backend.DTOs.Auth
 
         [Required(ErrorMessage = "Surname is required.")]
         [MaxLength(100)]
-        public string lastName { get; set; }
+        public required string lastName { get; set; }
     }
 }
