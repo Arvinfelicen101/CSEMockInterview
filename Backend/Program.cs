@@ -79,7 +79,7 @@ builder.Services.AddIdentity<Users, IdentityRole>()
     .AddDefaultTokenProviders();
 
 var jwtConfig = builder.Configuration.GetSection("Jwt");
-
+var key = jwtConfig["key"] ?? throw new InvalidOperationException("JWT Key is missing");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -90,7 +90,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateLifetime = true,
             ValidIssuer = jwtConfig["Issuer"],
             ValidAudience = jwtConfig["Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig["Key"]))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
         };
     });
 
