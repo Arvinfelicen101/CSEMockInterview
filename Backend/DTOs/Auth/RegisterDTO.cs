@@ -8,23 +8,23 @@ namespace Backend.DTOs.Auth
         [Required(ErrorMessage = "Username is required." )]
         [MinLength(3, ErrorMessage = "Username must be at least 3 characters.")]
         [MaxLength(50, ErrorMessage = "Username cannot exceed 50 characters.")]
-        public string username { get; set; }
+        public required string username { get; set; }
 
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress(ErrorMessage = "Email format is invalid.")]
-        public string email  { get; set; }
+        public required string email  { get; set; }
 
         [Required(ErrorMessage = "Password is required.")]
         [MinLength(6, ErrorMessage = "Password must be at least 6 characters.")]
-        public string password { get; set; }
+        public required string password { get; set; }
 
         [Required(ErrorMessage = "Confirm Password is required.")]
         [Compare("password", ErrorMessage = "Password and Confirm Password do not match.")]
-        public string confirmPassword { get; set; }
+        public required string confirmPassword { get; set; }
 
         [Required(ErrorMessage = "First name is required.")]
         [MaxLength(100)]
-        public string firstName { get; set; }
+        public required string firstName { get; set; }
 
         [MaxLength(100)]
         public string? middleName { get; set; }
