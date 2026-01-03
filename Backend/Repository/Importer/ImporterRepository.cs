@@ -12,11 +12,10 @@ public class ImporterRepository : IImporterRepository
         _context = context;
     }
 
-    public async Task SaveFKData(List<Category> categories, List<Paragraphs> paragraph, List<Choices> choices)
+    public async Task AddAsync(List<Questions> questionsList,List<Choices> choicesList)
     {
-        await _context.Category.AddRangeAsync(categories);
-        await _context.Paragraph.AddRangeAsync(paragraph);
-        await _context.Choice.AddRangeAsync(choices);
+        await _context.Question.AddRangeAsync(questionsList);
+        await _context.Choice.AddRangeAsync(choicesList);
         await _context.SaveChangesAsync();
     }
     
