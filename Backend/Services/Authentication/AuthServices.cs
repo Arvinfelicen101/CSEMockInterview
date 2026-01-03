@@ -42,8 +42,6 @@ namespace Backend.Services.Authentication
                 AccessToken = token.AccessToken,
                 RefreshToken = token.RefreshToken
             };
-            
-
         }
 
         private async Task<TokenDTO> GenerateJwtToken(Users user)
