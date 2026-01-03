@@ -18,9 +18,9 @@ public class YearPeriodServiceTest
         var repoMock = new Mock<IYearPeriodRepository>();
 
         repoMock.Setup(r => r.GetAllAsync())
-            .ReturnsAsync(new List<Category>
+            .ReturnsAsync(new List<YearPeriods>
             {
-                new Category { Id = 1, CategoryName = Categories.Analytical }
+                new YearPeriods(){Id = 1, Year = 2025, Periods = Periods.First}
             });
 
         var memoryCache = new MemoryCache(new MemoryCacheOptions());
@@ -36,7 +36,6 @@ public class YearPeriodServiceTest
         //act
         var firstCall = await service.GetAllService();  // cache MISS
         var secondCall = await service.GetAllService(); // cache HIT
-        
         
         //assert
         Assert.Single(firstCall);
