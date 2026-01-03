@@ -4,8 +4,8 @@ namespace Backend.DTOs.SubCategory
 {
     public class SubCategoryReadDTO
     {
-        public string SubCategoryName { get; set; }
-        public string CategoryId { get; set; }
-        public List<QuestionReadDTO> Questions { get; set; }
+        public required string SubCategoryName { get; set; }
+        public required string CategoryId { get; set; }
+        public required List<QuestionReadDTO> Questions { get; set; }
     }
 }

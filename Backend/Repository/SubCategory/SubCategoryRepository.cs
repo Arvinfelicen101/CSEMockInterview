@@ -34,16 +34,10 @@ namespace Backend.Repository.SubCategory
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<SubCategoryListDTO>> GetAllAsync()
+        public async Task<List<SubCategories>> GetAllAsync()
         {
             return await _context.SubCategory
                 .AsNoTracking()
-                .Select(q => new SubCategoryListDTO
-                {
-                    SubCategoryName = q.SubCategoryName,
-                    CategoryId = q.CategoryId,
-
-                })
                 .ToListAsync();
         }
 
@@ -56,6 +50,7 @@ namespace Backend.Repository.SubCategory
         public async Task UpdataSubCategoryAsync(SubCategories subCategory)
         {
             _context.SubCategory.Update(subCategory);
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteSubCategoryAsync(SubCategories subCategory)

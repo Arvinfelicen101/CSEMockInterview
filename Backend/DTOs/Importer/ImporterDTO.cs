@@ -5,7 +5,7 @@ namespace Backend.DTOs.Importer;
 public class ImporterDTO
 {
     [Required]
-    public string fileName { get; set; }
+    public required string fileName { get; set; }
     [Required]
-    public IFormFile file { get; set; }
+    public required IFormFile file { get; set; }
 }

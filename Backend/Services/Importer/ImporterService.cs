@@ -1,5 +1,10 @@
+using System.Text;
 using Backend.Repository.Importer;
 using Backend.DTOs.Importer;
+using Backend.Models;
+using Backend.Services.ParagraphManagement;
+using Backend.Services.SubCategory;
+using Backend.Services.YearPeriodManagement;
 using ClosedXML.Excel;
 
 namespace Backend.Services.Importer;
@@ -7,63 +12,60 @@ namespace Backend.Services.Importer;
 public class ImporterService : IImporterService
 {
     private readonly IImporterRepository _repository;
+    private readonly IYearPeriodService _yearPeriodService;
+    private readonly IParagraphManagementService _paragraphService;
+    private readonly ISubCategoryService _subCategoryService;
 
-    public ImporterService(IImporterRepository repository)
+    public ImporterService(IImporterRepository repository, IYearPeriodService yearPeriodService, IParagraphManagementService paragraphManagementService, ISubCategoryService subCategoryService)
     {
+        _paragraphService = paragraphManagementService;
         _repository = repository;
+        _yearPeriodService = yearPeriodService;
+        _subCategoryService = subCategoryService;
     }
 
-    public async Task ProcessFileAsync(ImporterDTO xlsx)
+    public async Task<IEnumerable<YearPeriods>> getCategoryFK()
     {
-        var result = await ParseFileAsync(xlsx);
-        var mappeddata = await ServiceHelper.ImportMapper(result);
-
-    }
-
-    public async Task<List<RawDataDTO>> ParseFileAsync(ImporterDTO xlsx)
-    {
-        string sheetName;
-        var extractedData = new List<RawDataDTO>();
-        using (var stream = new MemoryStream())
-        {
-            await xlsx.file.CopyToAsync(stream);
-            try
-            {
-                using (var workbook = new XLWorkbook(stream))
-                {
-                    foreach (var worksheet in workbook.Worksheets)
-                    {
-                        sheetName = worksheet.Name;
-                        var rows = worksheet.RowsUsed().Skip(1);
-                        foreach (var row in rows)
-                        {
-                            extractedData.Add(new RawDataDTO()
-                            {
-                                RawCategories = sheetName,
-                                RawQuestions = row.Cell(1).GetString(),
-                                RawSubCategories = row.Cell(2).GetString(),
-                                RawChoices = new List<string>()
-                                {
-                                    row.Cell(3).GetString(),
-                                    row.Cell(4).GetString(),
-                                    row.Cell(5).GetString(),
-                                },
-                                RawAnswers = row.Cell(6).GetString(),
-                                RawParagraph = row.Cell(7).GetString(),
-                            });
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception();
-            }
-            
-        }
-
-        return extractedData;
+        return await _yearPeriodService.GetAllService();
     }
     
-    //create mapping for fks first
+    public async Task<IEnumerable<Paragraphs>> getParagraphFK()
+    {
+        return await _paragraphService.GetAllService();
+    }
+    
+    public async Task<IEnumerable<SubCategories>> getSubCategoriesFK()
+    {
+        return await _subCategoryService.GetAllAsync();
+    }
+
+    public async Task<FKDataDTOs> ExistingCache()
+    {
+        var YearPeriodData = await getCategoryFK();
+        var ParagraphData = await getParagraphFK();
+        var subCategoriesData = await getSubCategoriesFK();
+        var fkData = new FKDataDTOs()
+        {
+            YearPeriodFK = YearPeriodData,
+            ParagraphFK = ParagraphData,
+            subCategoriesFK = subCategoriesData
+        };
+        return fkData;
+    }
+    
+    //should be map and insert fk data
+    public async Task ProcessFileAsync(ImporterDTO xlsx)
+    {
+        var fkData = await ExistingCache();
+        var result = await ServiceHelper.ParseFileAsync(xlsx);
+        var mappeddata = ServiceHelper.ImportFkMapper(result, fkData);
+
+        await _repository.AddAsync(mappeddata.Item1, mappeddata.Item2);
+
+    }
+    
+    
+    //map and insert question and choices data
+    
+    
 }

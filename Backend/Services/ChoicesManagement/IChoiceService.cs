@@ -1,6 +1,6 @@
 ﻿using Backend.DTOs.Choices;
 
-namespace Backend.Services.Choices
+namespace Backend.Services.ChoicesManagement
 {
     public interface IChoiceService
     {

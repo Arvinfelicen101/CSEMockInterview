@@ -4,7 +4,7 @@ using Backend.Repository.SubCategory;
 using Backend.Exceptions;
 using Backend.Models;
 using Microsoft.Extensions.Caching.Memory;
-using DocumentFormat.OpenXml.Wordprocessing;
+
 
 namespace Backend.Services.SubCategory
 {
@@ -58,10 +58,10 @@ namespace Backend.Services.SubCategory
         }
 
         // Read
-        public async Task<List<SubCategoryListDTO>> GetAllAsync()
+        public async Task<List<SubCategories>> GetAllAsync()
         {
-            if (_cache.TryGetValue(CacheKeys.SubCategoryAll, out List<SubCategoryListDTO> cached))
-                return cached;
+            if (_cache.TryGetValue(CacheKeys.SubCategoryAll, out List<SubCategories>? cached))
+                return cached!;
 
             var result = await _repo.GetAllAsync();
 

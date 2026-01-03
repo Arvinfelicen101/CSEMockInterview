@@ -2,11 +2,12 @@ namespace Backend.DTOs.Importer;
 
 public class RawDataDTO
 {
-    public string RawQuestions { get; set; }
+    public required string RawQuestions { get; set; }
     public string? RawParagraph { get; set; }
-    public string RawCategories { get; set; }
-    public string RawSubCategories { get; set; }
-    public List<string> RawChoices { get; set; }
-    public string RawAnswers { get; set; }
+    public required string RawCategories { get; set; }
+    public required string RawSubCategories { get; set; }
+    public required List<ChoiceDTO> RawChoices { get; set; }
+    public int RawYear { get; set; }
+    public required string RawPeriods { get; set; }
     //year period
 }

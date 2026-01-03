@@ -1,6 +1,8 @@
 using Backend.DTOs.Importer;
 using Backend.Services.Importer;
 using Microsoft.AspNetCore.Mvc;
+using Backend.Models;
+using Backend.Services.YearPeriodManagement;
 
 namespace Backend.Controllers.Importer;
 
@@ -9,10 +11,12 @@ namespace Backend.Controllers.Importer;
 public class ImporterController : ControllerBase
 {
     private readonly IImporterService _service;
+    private readonly IYearPeriodService _yearPeriodService;
 
-    public ImporterController(IImporterService service)
+    public ImporterController(IImporterService service, IYearPeriodService yearPeriodService)
     {
         _service = service;
+        _yearPeriodService = yearPeriodService;
     }
 
     [HttpPost]
@@ -20,5 +24,12 @@ public class ImporterController : ControllerBase
     {
         await _service.ProcessFileAsync(xlsx);
         return Ok(new { message = "User created successfully" });
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> TestCategory()
+    {
+        var result = await _yearPeriodService.GetAllService();
+        return Ok(result);
     }
 }
