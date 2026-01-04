@@ -78,7 +78,7 @@ builder.Services.AddIdentity<Users, IdentityRole>()
     .AddEntityFrameworkStores<MyDbContext>()
     .AddDefaultTokenProviders();
 
-var jwtConfig = builder.Configuration.GetSection("Jwt");
+var jwtConfig = builder.Configuration.GetSection("JwtConfig");
 var key = jwtConfig["key"] ?? throw new InvalidOperationException("JWT Key is missing");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

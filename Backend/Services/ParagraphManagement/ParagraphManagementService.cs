@@ -13,7 +13,7 @@ public class ParagraphManagementService : IParagraphManagementService
     
     private const string ParagraphCacheKey = "Paragraph:all";
 
-    public ParagraphManagementService(IParagraphManagementRepository repository, IMemoryCache cache, ILogger logger)
+    public ParagraphManagementService(IParagraphManagementRepository repository, IMemoryCache cache, ILogger<ParagraphManagementService> logger)
     {
         _repository = repository;
         _cache = cache;
