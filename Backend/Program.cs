@@ -49,7 +49,6 @@ builder.Services.AddScoped<IImporterService, ImporterService>();
 builder.Services.AddScoped<IQuestionService,  QuestionService>();
 builder.Services.AddScoped<IChoiceService, ChoiceService>();
 builder.Services.AddScoped<ISubCategoryService, SubCategoryService>();
-
 builder.Services.AddScoped<IYearPeriodService, YearPeriodService>();
 builder.Services.AddScoped<IParagraphManagementService, ParagraphManagementService>();
 
@@ -78,7 +77,7 @@ builder.Services.AddIdentity<Users, IdentityRole>()
     .AddEntityFrameworkStores<MyDbContext>()
     .AddDefaultTokenProviders();
 
-var jwtConfig = builder.Configuration.GetSection("Jwt");
+var jwtConfig = builder.Configuration.GetSection("JwtConfig");
 var key = jwtConfig["key"] ?? throw new InvalidOperationException("JWT Key is missing");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
