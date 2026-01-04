@@ -15,11 +15,7 @@ namespace Backend.Services.ChoicesManagement
             _repo = repo;
             _context = context;
         }
-
-        public async Task CreateChoiceAsync(ChoiceCreateDTO choice)
-        {
-           
-        }
+        
 
         public async Task UpdateChoiceAsync(int id, ChoiceUpdateDTO choice)
         {
@@ -41,7 +37,7 @@ namespace Backend.Services.ChoicesManagement
             choiceById.ChoiceText = choice.ChoiceText;
             choiceById.IsCorrect = choice.IsCorrect;
            
-            _repo.UpdateChoice(choiceById);
+            await _repo.UpdateChoiceAsync(choiceById);
             await _context.SaveChangesAsync();
 
         }
@@ -53,7 +49,7 @@ namespace Backend.Services.ChoicesManagement
 
             if (choice == null) throw new NotFoundException(("Choice does not exist"));
 
-             _repo.DeleteChoice(choice);
+            await _repo.DeleteChoiceAsync(choice);
             await  _context.SaveChangesAsync();
         }
     }
