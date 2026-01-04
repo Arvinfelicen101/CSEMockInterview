@@ -13,7 +13,7 @@ namespace Backend.Repository.Question
     {
         private readonly MyDbContext _context;
 
-    public QuestionRepository (MyDbContext context)
+        public QuestionRepository (MyDbContext context)
         {
             _context = context;
         }
@@ -83,16 +83,14 @@ namespace Backend.Repository.Question
                 .FirstOrDefaultAsync(q => q.Id == id);
         }
 
-        public async Task UpdateQuestionAsync(Questions question)
+        public void UpdateQuestion(Questions question)
         {
             _context.Question.Update(question);
-           
         }
 
-        public async Task DeleteQuestionAsync(Questions question)
+        public void DeleteQuestion(Questions question)
         {
             _context.Question.Remove(question);
-
         }
 
        

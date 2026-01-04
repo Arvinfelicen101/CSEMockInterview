@@ -6,12 +6,12 @@ namespace Backend.DTOs.SubCategory
     public class SubCategoryCreateDTO
     {
         [Required(ErrorMessage = "SubCategoryName is required.")]
-        public string SubCategoryName { get; set; }
+        public required string SubCategoryName { get; set; }
 
         [Required(ErrorMessage = "CategoryId is required")]
-        public int CategoryId { get; set; }
+        public required int CategoryId { get; set; }
 
         [MinLength(1)]
-        public List<QuestionCreateDTO> Questions { get; set; }
+        public List<QuestionCreateDTO>? Questions { get; set; }
     }
 }

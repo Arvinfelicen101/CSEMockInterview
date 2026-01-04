@@ -83,7 +83,23 @@ namespace Backend.Tests.Services.Question
             var dto = new QuestionReadDTO
             {
                 Id = 1,
-                QuestionName = "Sample"
+                QuestionName = "Sample",
+                SubCategoryId = 1,
+                ParagraphId = 1,
+                YearPeriodId = 1,
+                choices = new List<ChoiceReadDTO>()
+                {
+                    new ChoiceReadDTO()
+                    {
+                        ChoiceText = "yes",
+                        IsCorrect = true
+                    },
+                    new ChoiceReadDTO()
+                    {
+                        ChoiceText = "no",
+                        IsCorrect = false
+                    }
+                }
             };
 
             _repoMock
@@ -139,7 +155,7 @@ namespace Backend.Tests.Services.Question
             Assert.Equal(2, existingQuestion.SubCategoryId);
 
             _repoMock.Verify(
-                r => r.UpdateQuestionAsync(existingQuestion),
+                r => r.UpdateQuestion(existingQuestion),
                 Times.Once);
 
             _contextMock.Verify(
@@ -151,7 +167,13 @@ namespace Backend.Tests.Services.Question
         public async Task DeleteQuestionAsync_WhenValid_ShouldDeleteQuestion()
         {
             // Arrange
-            var question = new Questions { Id = 1 };
+            var question = new Questions
+            {
+                Id = 1,
+                QuestionName = "what is kkk",
+                YearPeriodId = 1,
+                SubCategoryId = 1,
+            };
 
             _repoMock
                 .Setup(r => r.FindQuestionByIdAsync(1))
@@ -162,7 +184,7 @@ namespace Backend.Tests.Services.Question
 
             // Assert
             _repoMock.Verify(
-                r => r.DeleteQuestionAsync(question),
+                r => r.DeleteQuestion(question),
                 Times.Once);
 
             _contextMock.Verify(

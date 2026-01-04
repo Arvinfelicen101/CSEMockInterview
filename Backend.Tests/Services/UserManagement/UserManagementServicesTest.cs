@@ -22,15 +22,14 @@ public class UserManagementServicesTest
         var user = new RegisterDTO()
         {
             username = "francis123",
+            email = "floresfrancisjoseph@gmail.com",
             firstName = "Francis",
             middleName = "Pajarit",
             lastName = "Flores",
             password = "Francis123!",
             confirmPassword = "Francis123?"
         };
-
-   
-
+        
         // Assert + act
         await Assert.ThrowsAsync<BadRequestException>(() => service.CreateUserAsync(user));
         Assert.NotSame(user.password, user.confirmPassword);
@@ -47,6 +46,7 @@ public class UserManagementServicesTest
         var user = new RegisterDTO()
         {
             username = "francis123",
+            email = "floresfrancisjoseph@gmail.com",
             firstName = "Francis",
             middleName = "Pajarit",
             lastName = "Flores",

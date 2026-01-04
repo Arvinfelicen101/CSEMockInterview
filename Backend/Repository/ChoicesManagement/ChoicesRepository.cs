@@ -1,9 +1,8 @@
 ﻿using Backend.Context;
 using Backend.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Runtime.InteropServices;
 
-namespace Backend.Repository.Choices
+namespace Backend.Repository.ChoicesManagement
 {
     public class ChoicesRepository : IChoicesRepository
     {
@@ -27,13 +26,13 @@ namespace Backend.Repository.Choices
            c.IsCorrect);
         }
 
-        public async Task CreateChoicesAsync(ItemChoices choice)
+        public async Task CreateChoicesAsync(Choices choice)
         {
             await _context.AddAsync(choice);
             
         }
 
-        public async Task <ItemChoices?> FindChoiceById(int id)
+        public async Task <Choices?> FindChoiceById(int id)
         {
             return await _context.Choice
                 .FirstOrDefaultAsync(c => c.Id == id);
@@ -48,15 +47,16 @@ namespace Backend.Repository.Choices
             return await _context.Question.AnyAsync(c => c.Id == id);
         }
 
-        public async Task UpdateChoiceAsync(ItemChoices choice)
+        public async Task UpdateChoiceAsync(Choices choice)
         {
-           _context.Choice.Update(choice);
-                }
+            _context.Choice.Update(choice);
+            await Task.CompletedTask;
+        }
 
-        public async Task DeleteChoiceAsync(ItemChoices choice)
+        public async Task DeleteChoiceAsync(Choices choice)
         {
-           _context.Choice.Remove(choice);
-        
+            _context.Choice.Remove(choice);
+            await Task.CompletedTask;
         }
     }
 }

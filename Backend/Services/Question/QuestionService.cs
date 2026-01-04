@@ -2,10 +2,7 @@
 using Backend.Models;
 using Backend.Repository.Question;
 using Backend.Exceptions;
-using Xunit.Sdk;
-using System.Runtime.InteropServices;
 using Microsoft.Extensions.Caching.Memory;
-using DocumentFormat.OpenXml.Wordprocessing;
 using Backend.Services.Question.QuestionValidator;
 using Backend.Context;
 
@@ -48,7 +45,7 @@ namespace Backend.Services.Question
 
             foreach (var choice in question.Choices)
             {
-                var choiceInfo = new ItemChoices
+                var choiceInfo = new Choices
                 {
                     ChoiceText = choice.ChoiceText,
                     IsCorrect = choice.IsCorrect,
@@ -77,8 +74,8 @@ namespace Backend.Services.Question
 
         public async Task<List<QuestionListDTO>> GetAllAsync()
         {
-            if (_cache.TryGetValue(CacheKeys.QuestionsAll, out List<QuestionListDTO> cached))
-                return cached;
+            if (_cache.TryGetValue(CacheKeys.QuestionsAll, out List<QuestionListDTO>? cached))
+                return cached!;
 
             var result = await _repo.GetAllAsync();
 
@@ -111,7 +108,7 @@ namespace Backend.Services.Question
             questionById.ParagraphId = question.ParagraphId;
 
 
-            await _repo.UpdateQuestionAsync(questionById);
+            _repo.UpdateQuestion(questionById);
             await _context.SaveChangesAsync();
             _cache.Remove(CacheKeys.QuestionsAll);
 
@@ -122,7 +119,7 @@ namespace Backend.Services.Question
             var question = await _repo.FindQuestionByIdAsync(id);
             if (question == null) throw new NotFoundException("Question does not exist.");
 
-            await _repo.DeleteQuestionAsync(question);
+            _repo.DeleteQuestion(question);
             await _context.SaveChangesAsync();
             _cache.Remove(CacheKeys.QuestionsAll);
         }

@@ -1,14 +1,14 @@
 ﻿using Backend.Context;
 using Backend.DTOs.Choices;
 using Backend.Models;
-using Backend.Repository.Choices;
-using Backend.Services.Choices;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Backend.Repository.ChoicesManagement;
+using Backend.Services.ChoicesManagement;
 
 namespace Backend.Tests.Services.Choices
 {
@@ -34,7 +34,7 @@ namespace Backend.Tests.Services.Choices
         {
             // Arrange
   
-            var existingChoice = new ItemChoices
+            var existingChoice = new Models.Choices
             {
                 Id = 1,
                 ChoiceText = "Old Choice",
@@ -63,7 +63,7 @@ namespace Backend.Tests.Services.Choices
             // Assert
 
             _repoMock.Verify(
-                r => r.UpdateChoiceAsync(It.Is<ItemChoices>(c =>
+                r => r.UpdateChoiceAsync(It.Is<Models.Choices>(c =>
                     c.ChoiceText == "Updated Choice" &&
                     c.IsCorrect == true
                 )),
@@ -80,7 +80,7 @@ namespace Backend.Tests.Services.Choices
         public async Task DeleteChoiceAsync_WhenChoiceExists_ShouldCallDeleteAndSave()
         {
             // Arrange
-            var choice = new ItemChoices { Id = 1, ChoiceText = "A", IsCorrect = false };
+            var choice = new Models.Choices { Id = 1, ChoiceText = "A", IsCorrect = false };
 
             _repoMock.Setup(r => r.FindChoiceById(1))
                      .ReturnsAsync(choice); 

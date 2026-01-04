@@ -9,6 +9,7 @@ using Moq;
 using Xunit;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Backend.DTOs.Question;
 
 namespace Backend.Tests.Services.SubCategory
 {
@@ -65,6 +66,16 @@ namespace Backend.Tests.Services.SubCategory
             var dto = new SubCategoryUpdateDTO
             {
                 SubCategoryName = "Updated",
+                Questions = new List<QuestionUpdateDTO>()
+                {
+                    new QuestionUpdateDTO()
+                    {
+                        ParagraphId = 1,
+                        QuestionName = "whamp whamp?",
+                        SubCategoryId = 4,
+                        YearPeriodId = 1
+                    }
+                },
                 CategoryId = 1
             };
 
@@ -73,7 +84,7 @@ namespace Backend.Tests.Services.SubCategory
 
             // Assert
             Assert.Equal("Updated", subCategory.SubCategoryName);
-            _repoMock.Verify(r => r.UpdataSubCategoryAsync(subCategory), Times.Once);
+            _repoMock.Verify(r => r.UpdataSubCategory(subCategory), Times.Once);
             _contextMock.Verify(c => c.SaveChangesAsync(default), Times.Once);
         }
 
@@ -81,14 +92,14 @@ namespace Backend.Tests.Services.SubCategory
         public async Task DeleteSubCategoryAsync_WhenValid_ShouldCallDelete()
         {
             // Arrange
-            var subCategory = new SubCategories { Id = 1 };
+            var subCategory = new SubCategories { Id = 1, SubCategoryName = "jampok", CategoryId = 1};
             _repoMock.Setup(r => r.FindByIdAsync(1)).ReturnsAsync(subCategory);
 
             // Act
             await _service.DeleteSubCategoryAsync(1);
 
             // Assert
-            _repoMock.Verify(r => r.DeleteSubCategoryAsync(subCategory), Times.Once);
+            _repoMock.Verify(r => r.DeleteSubCategory(subCategory), Times.Once);
         }
 
     }

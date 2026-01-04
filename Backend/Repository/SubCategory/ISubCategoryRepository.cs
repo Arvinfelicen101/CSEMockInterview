@@ -11,11 +11,11 @@ namespace Backend.Repository.SubCategory
         Task<bool> SubCategoryExistsAsync(int categoryId, string name);
         Task CreateSubCategoryAsync(SubCategories subCategory);
 
-        Task<List<SubCategoryListDTO>> GetAllAsync();
+        Task<List<SubCategories>> GetAllAsync();
         
         Task<SubCategories?> FindByIdAsync(int id);
 
-        Task UpdataSubCategoryAsync(SubCategories subCategory);
-        Task DeleteSubCategoryAsync(SubCategories subCategory);
+        void UpdataSubCategory(SubCategories subCategory);
+        void DeleteSubCategory(SubCategories subCategory);
     }
 }

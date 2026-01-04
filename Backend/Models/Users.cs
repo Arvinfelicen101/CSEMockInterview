@@ -5,8 +5,8 @@ namespace Backend.Models
  
     public class Users : IdentityUser
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
         public string? MiddleName { get; set; }
 
         public ICollection<UserAnswers> UserAnswersCollection { get; } = new List<UserAnswers>();

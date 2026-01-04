@@ -12,12 +12,12 @@ namespace Backend.Repository.Auth
         }
         public async Task<Users?> CheckUserRepository(Users user)
         {
-            var result = await manager.FindByNameAsync(user.UserName);
-            if (result != null && await manager.CheckPasswordAsync(result, user.PasswordHash))
+            if (string.IsNullOrWhiteSpace(user.UserName))
             {
-                return result;
+                return null;
             }
-            return null;
+            var result = await manager.FindByNameAsync(user.UserName);
+            return result;
         }
     }
 }

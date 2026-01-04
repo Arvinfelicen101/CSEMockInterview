@@ -2,13 +2,11 @@ using Backend.Context;
 using Backend.Middlewares;
 using Backend.Models;
 using Backend.Repository.Auth;
-using Backend.Repository.Choices;
 using Backend.Repository.Importer;
 using Backend.Repository.Question;
 using Backend.Repository.SubCategory;
 using Backend.Repository.UserManagement;
 using Backend.Services.Authentication;
-using Backend.Services.Choices;
 using Backend.Services.Importer;
 using Backend.Services.Question;
 using Backend.Services.Question.QuestionValidator;
@@ -20,12 +18,19 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
 using System.Text;
+using Backend.Repository.ChoicesManagement;
+using Backend.Repository.ParagraphManagement;
+using Backend.Repository.YearPeriodManagement;
+using Backend.Services.ChoicesManagement;
+using Backend.Services.ParagraphManagement;
+using Backend.Services.YearPeriodManagement;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
 builder.Services.AddMemoryCache();
+
 //DI Repositories
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IUserManagementRepository, UserManagementRepository>();
@@ -33,6 +38,8 @@ builder.Services.AddScoped<IImporterRepository, ImporterRepository>();
 builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
 builder.Services.AddScoped<IChoicesRepository, ChoicesRepository>();
 builder.Services.AddScoped<ISubCategoryRepository, SubCategoryRepository>();
+builder.Services.AddScoped<IYearPeriodRepository, YearPeriodManagement>();
+builder.Services.AddScoped<IParagraphManagementRepository, ParagraphManagementRepository>();
 
 //DI Services
 builder.Services.AddScoped<IQuestionValidator, QuestionValidator>();
@@ -43,6 +50,8 @@ builder.Services.AddScoped<IQuestionService,  QuestionService>();
 builder.Services.AddScoped<IChoiceService, ChoiceService>();
 builder.Services.AddScoped<ISubCategoryService, SubCategoryService>();
 
+builder.Services.AddScoped<IYearPeriodService, YearPeriodService>();
+builder.Services.AddScoped<IParagraphManagementService, ParagraphManagementService>();
 
 //DI Middleware
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
@@ -70,7 +79,7 @@ builder.Services.AddIdentity<Users, IdentityRole>()
     .AddDefaultTokenProviders();
 
 var jwtConfig = builder.Configuration.GetSection("Jwt");
-
+var key = jwtConfig["key"] ?? throw new InvalidOperationException("JWT Key is missing");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -81,14 +90,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateLifetime = true,
             ValidIssuer = jwtConfig["Issuer"],
             ValidAudience = jwtConfig["Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig["Key"]))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
         };
     });
 
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
-
-builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 

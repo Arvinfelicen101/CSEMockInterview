@@ -1,11 +1,9 @@
-﻿using Backend.DTOs.Choices;
-using Backend.Repository.Choices;
-using DocumentFormat.OpenXml.Presentation;
+﻿using Backend.Context;
+using Backend.DTOs.Choices;
 using Backend.Exceptions;
-using System.Runtime.InteropServices;
-using Backend.Context;
+using Backend.Repository.ChoicesManagement;
 
-namespace Backend.Services.Choices
+namespace Backend.Services.ChoicesManagement
 {
     public class ChoiceService : IChoiceService
     {
@@ -17,11 +15,7 @@ namespace Backend.Services.Choices
             _repo = repo;
             _context = context;
         }
-
-        public async Task CreateChoiceAsync(ChoiceCreateDTO choice)
-        {
-           
-        }
+        
 
         public async Task UpdateChoiceAsync(int id, ChoiceUpdateDTO choice)
         {
@@ -56,7 +50,7 @@ namespace Backend.Services.Choices
             if (choice == null) throw new NotFoundException(("Choice does not exist"));
 
             await _repo.DeleteChoiceAsync(choice);
-            await _context.SaveChangesAsync();
+            await  _context.SaveChangesAsync();
         }
     }
 }
