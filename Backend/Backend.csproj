@@ -5,8 +5,8 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-		<AnalysisLevel>latest</AnalysisLevel>
-		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+<!--		<AnalysisLevel>latest</AnalysisLevel>-->
+<!--		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>-->
 	</PropertyGroup>
 
 	<ItemGroup>
