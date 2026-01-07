@@ -9,13 +9,14 @@ namespace Backend.Services.Importer;
 
 public static class ServiceHelper
 {
-    public static async Task<List<RawDataDTO>> ParseFileAsync(ImporterDTO xlsx)
+    public static async Task<List<RawDataDTO>> ParseFileAsync(IFormFile xlsx)
     {
+        Console.WriteLine("parsing file from service helper");
         string sheetName;
         var extractedData = new List<RawDataDTO>();
         using (var stream = new MemoryStream())
         {
-            var filename = xlsx.file.FileName;
+            var filename = xlsx.FileName;
             string year = filename.Substring(0, 3);
             int i = 5;
             var period = new StringBuilder();
@@ -32,7 +33,7 @@ public static class ServiceHelper
             }
 
             string result = period.ToString();
-            await xlsx.file.CopyToAsync(stream);
+            await xlsx.CopyToAsync(stream);
             try
             {
                 using (var workbook = new XLWorkbook(stream))
@@ -107,7 +108,7 @@ public static class ServiceHelper
         };
         var questions = new List<Questions>();
         var choices = new List<Choices>();
-        
+
         
         foreach (var rowData in list)
         {
