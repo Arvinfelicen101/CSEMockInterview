@@ -51,10 +51,10 @@ public class ImporterService : IImporterService
         return fkData;
     }
 
-    public async Task ProcessFileAsync(ImporterDTO xlsx)
+    public async Task ProcessFileAsync(IFormFile File)
     {
         var fkData = await ExistingCache();
-        var result = await ServiceHelper.ParseFileAsync(xlsx);
+        var result = await ServiceHelper.ParseFileAsync(File);
         var mappeddata = ServiceHelper.ImportFkMapper(result, fkData);
         await _repository.AddAsync(mappeddata.Item1, mappeddata.Item2);
     }

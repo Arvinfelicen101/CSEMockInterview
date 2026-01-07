@@ -4,5 +4,5 @@ namespace Backend.Services.Importer;
 
 public interface IImporterService
 {
-    Task ProcessFileAsync(ImporterDTO xlsx);
+    Task ProcessFileAsync(IFormFile File);
 }
