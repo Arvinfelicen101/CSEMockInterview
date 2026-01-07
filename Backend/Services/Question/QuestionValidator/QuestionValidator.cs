@@ -1,6 +1,4 @@
-﻿
-using Backend.Exceptions;
-using Backend.Models;
+﻿using Backend.Exceptions;
 using Backend.Repository.Question;
 
 namespace Backend.Services.Question.QuestionValidator
