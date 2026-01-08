@@ -1,6 +1,4 @@
-﻿
-
-using Backend.Context;
+﻿using Backend.Context;
 using Backend.DTOs.Choices;
 using Backend.DTOs.Question;
 using Backend.Models;
@@ -97,7 +95,6 @@ namespace Backend.Repository.Question
         {
             await _context.SaveChangesAsync();
         }
-
-       
+        
     }
 }
