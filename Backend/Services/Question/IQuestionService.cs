@@ -1,4 +1,5 @@
 ﻿using Backend.DTOs.Question;
+using Backend.Models;
 
 namespace Backend.Services.Question
 {
@@ -7,7 +8,7 @@ namespace Backend.Services.Question
         Task CreateQuestionAsync(QuestionCreateDTO question);
 
         Task <QuestionReadDTO> GetQuestionByIdAsync(int id);
-        Task<List<QuestionListDTO>> GetAllAsync();
+        Task<List<Questions>> GetAllAsync();
 
         Task UpdateQuestionAsync(int id, QuestionUpdateDTO question);
 
