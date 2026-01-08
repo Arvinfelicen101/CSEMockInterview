@@ -13,13 +13,15 @@ public class ImporterService : IImporterService
     private readonly IYearPeriodService _yearPeriodService;
     private readonly IParagraphManagementService _paragraphService;
     private readonly ISubCategoryService _subCategoryService;
+    private readonly ILogger<ImporterService> _logger;
 
-    public ImporterService(IImporterRepository repository, IYearPeriodService yearPeriodService, IParagraphManagementService paragraphManagementService, ISubCategoryService subCategoryService)
+    public ImporterService(IImporterRepository repository, IYearPeriodService yearPeriodService, IParagraphManagementService paragraphManagementService, ISubCategoryService subCategoryService, ILogger<ImporterService> logger)
     {
         _paragraphService = paragraphManagementService;
         _repository = repository;
         _yearPeriodService = yearPeriodService;
         _subCategoryService = subCategoryService;
+        _logger = logger;
     }
 
     public async Task<IEnumerable<YearPeriods>> getCategoryFK()
@@ -54,8 +56,8 @@ public class ImporterService : IImporterService
     public async Task ProcessFileAsync(IFormFile File)
     {
         var fkData = await ExistingCache();
-        var result = await ServiceHelper.ParseFileAsync(File);
-        var mappeddata = ServiceHelper.ImportFkMapper(result, fkData);
+        var result = await ServiceHelper.ParseFileAsync(File, _logger);
+        var mappeddata = ServiceHelper.ImportFkMapper(result, fkData, _logger);
         await _repository.AddAsync(mappeddata.Item1, mappeddata.Item2);
     }
 }
