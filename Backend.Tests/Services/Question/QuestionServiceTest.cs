@@ -19,7 +19,6 @@ namespace Backend.Tests.Services.Question
     {
         public readonly Mock<IQuestionRepository> _repoMock;
         public readonly Mock<IQuestionValidator> _validatorMock;
-        public readonly Mock<MyDbContext> _contextMock;
         public readonly IMemoryCache _memoryCache;
 
         public readonly QuestionService _service;
@@ -28,7 +27,6 @@ namespace Backend.Tests.Services.Question
         {
             _repoMock = new Mock<IQuestionRepository>();
             _validatorMock = new Mock<IQuestionValidator>();
-            _contextMock = new Mock<MyDbContext>();
 
             _memoryCache = new MemoryCache(new MemoryCacheOptions());
             _service = new QuestionService(
@@ -62,6 +60,8 @@ namespace Backend.Tests.Services.Question
         }
             };
 
+
+            _repoMock.Setup(q => q.SaveChangesAsync());
             // Act
             await _service.CreateQuestionAsync(dto);
 
@@ -69,10 +69,8 @@ namespace Backend.Tests.Services.Question
             _repoMock.Verify(
                 r => r.AddQuestionAsync(It.IsAny<Questions>()),
                 Times.Once);
-
-            _contextMock.Verify(
-                c => c.SaveChangesAsync(It.IsAny<CancellationToken>()),
-                Times.Once);
+            
+            _repoMock.Verify(q => q.SaveChangesAsync(), Times.Once);
         }
 
         [Fact]

@@ -3,12 +3,8 @@ using Backend.DTOs.SubCategory;
 using Backend.Models;
 using Backend.Repository.SubCategory;
 using Backend.Services.SubCategory;
-using Backend.Exceptions;
 using Microsoft.Extensions.Caching.Memory;
 using Moq;
-using Xunit;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Backend.DTOs.Question;
 
 namespace Backend.Tests.Services.SubCategory
@@ -16,18 +12,15 @@ namespace Backend.Tests.Services.SubCategory
     public class SubCategoryServiceTest
     {
         private readonly Mock<ISubCategoryRepository> _repoMock;
-        private readonly Mock<MyDbContext> _contextMock;
         private readonly Mock<IMemoryCache> _cacheMock;
         private readonly SubCategoryService _service;
 
         public SubCategoryServiceTest()
         {
             _repoMock = new Mock<ISubCategoryRepository>();
-            _contextMock = new Mock<MyDbContext>();
             _cacheMock = new Mock<IMemoryCache>();
 
             _service = new SubCategoryService(
-                _contextMock.Object,
                 _repoMock.Object,
                 _cacheMock.Object
             );
@@ -62,7 +55,7 @@ namespace Backend.Tests.Services.SubCategory
             _repoMock.Setup(r => r.FindByIdAsync(1)).ReturnsAsync(subCategory);
             _repoMock.Setup(r => r.CategoryExistAsync(It.IsAny<int>())).ReturnsAsync(true);
             _repoMock.Setup(r => r.SubCategoryExistsAsync(It.IsAny<int>(), It.IsAny<string>())).ReturnsAsync(false);
-
+            _repoMock.Setup(s => s.SaveChangesAsync());
             var dto = new SubCategoryUpdateDTO
             {
                 SubCategoryName = "Updated",
@@ -85,7 +78,8 @@ namespace Backend.Tests.Services.SubCategory
             // Assert
             Assert.Equal("Updated", subCategory.SubCategoryName);
             _repoMock.Verify(r => r.UpdataSubCategory(subCategory), Times.Once);
-            _contextMock.Verify(c => c.SaveChangesAsync(default), Times.Once);
+            _repoMock.Verify(q => q.SaveChangesAsync(), Times.Once);
+           
         }
 
         [Fact]

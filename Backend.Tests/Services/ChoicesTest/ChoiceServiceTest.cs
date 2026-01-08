@@ -43,6 +43,8 @@ namespace Backend.Tests.Services.ChoicesTest
                 .Setup(r => r.HasAnotherCorrectChoiceAsync(It.IsAny<int>(), It.IsAny<int>()))
                 .ReturnsAsync(true);
 
+            _repoMock.Setup(r => r.SaveChangesAsync());
+
             var dto = new ChoiceUpdateDTO
             {
                 ChoiceText = "Updated Choice",
@@ -63,10 +65,7 @@ namespace Backend.Tests.Services.ChoicesTest
                 Times.Once
             );
 
-            _contextMock.Verify(
-                c => c.SaveChangesAsync(It.IsAny<CancellationToken>()),
-                Times.Once
-            );
+            _repoMock.Verify(r => r.SaveChangesAsync(), Times.Once);
         }
 
         [Fact]
