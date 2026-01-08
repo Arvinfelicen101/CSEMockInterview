@@ -1,4 +1,3 @@
-using Backend.DTOs.Importer;
 using Backend.Models;
 using Backend.Repository.ParagraphManagement;
 using Microsoft.Extensions.Caching.Memory;

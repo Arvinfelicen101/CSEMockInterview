@@ -14,7 +14,7 @@ namespace Backend.Repository.SubCategory
         Task<List<SubCategories>> GetAllAsync();
         
         Task<SubCategories?> FindByIdAsync(int id);
-
+        Task SaveChangesAsync();
         Task UpdataSubCategory(SubCategories subCategory);
         Task DeleteSubCategory(SubCategories subCategory);
     }

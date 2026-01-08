@@ -59,6 +59,10 @@ namespace Backend.Repository.SubCategory
             return Task.CompletedTask;
         }
 
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
         
     }
 

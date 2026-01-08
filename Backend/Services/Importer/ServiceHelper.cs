@@ -9,14 +9,15 @@ namespace Backend.Services.Importer;
 
 public static class ServiceHelper
 {
-    public static async Task<List<RawDataDTO>> ParseFileAsync(ImporterDTO xlsx)
+    public static async Task<List<RawDataDTO>> ParseFileAsync(IFormFile xlsx, ILogger _logger)
     {
+        Console.WriteLine("parsing file from service helper");
         string sheetName;
         var extractedData = new List<RawDataDTO>();
         using (var stream = new MemoryStream())
         {
-            var filename = xlsx.file.FileName;
-            string year = filename.Substring(0, 3);
+            var filename = xlsx.FileName;
+            string year = filename.Substring(0, 4);
             int i = 5;
             var period = new StringBuilder();
 
@@ -32,7 +33,7 @@ public static class ServiceHelper
             }
 
             string result = period.ToString();
-            await xlsx.file.CopyToAsync(stream);
+            await xlsx.CopyToAsync(stream);
             try
             {
                 using (var workbook = new XLWorkbook(stream))
@@ -79,6 +80,7 @@ public static class ServiceHelper
                                 RawYear = Convert.ToInt32(year),
                                 RawPeriods = result
                             });
+                            _logger.LogInformation($"Saved to list: {row.Cell(1).GetString()}");
                         }
                     }
                 }
@@ -91,11 +93,9 @@ public static class ServiceHelper
         }
         return extractedData;
     }
-    
-    //create a dto for the list of fks, should be in service if it need to insert data, possible to be not. just separate method
-    public static (List<Questions>, List<Choices>) ImportFkMapper(List<RawDataDTO> list, FKDataDTOs dtos)
+   
+    public static (List<Questions>, List<Choices>) ImportFkMapper(List<RawDataDTO> list, FKDataDTOs dtos, ILogger _logger)
     {
-        //PREPARE CACHE VARIABLES FIRST / dictionaries
         var paragraphCache = dtos.ParagraphFK.ToDictionary(p => p.ParagraphText, p => p);
         var yearPeriodCache = dtos.YearPeriodFK.ToDictionary(y => (y.Year, y.Periods), y => y);
         var subCategoryCache = dtos.subCategoriesFK.ToDictionary(s => s.SubCategoryName, s => s);
@@ -107,24 +107,31 @@ public static class ServiceHelper
             ["Clerical"] = 4,
             ["General"] = 5
         };
+        var questionCache = dtos.questionsCache.ToDictionary(q => q.QuestionName, q => q);
+        
         var questions = new List<Questions>();
         var choices = new List<Choices>();
-        
+
         
         foreach (var rowData in list)
         {
+
+            if (questionCache.ContainsKey(rowData.RawQuestions)) continue; // skip iteration
             var rawParagraph = rowData.RawParagraph;
 
-            if (string.IsNullOrWhiteSpace(rawParagraph))
-                continue;
-            
-            if (!paragraphCache.TryGetValue(rawParagraph, out var paragraph))
+            Paragraphs? paragraph = null;
+
+            if (!string.IsNullOrWhiteSpace(rawParagraph))
             {
-                paragraph = new Paragraphs()
+                if (!paragraphCache.TryGetValue(rawParagraph, out paragraph))
                 {
-                    ParagraphText = rawParagraph
-                };
-                paragraphCache[rawParagraph] = paragraph;
+                    paragraph = new Paragraphs
+                    {
+                        ParagraphText = rawParagraph
+                    };
+
+                    paragraphCache[rawParagraph] = paragraph;
+                }
             }
            
             if (!yearPeriodCache.TryGetValue((rowData.RawYear, Enum.TryParse<Periods>(rowData.RawPeriods, true, out var period) ? period : default), out var yearPeriods))
@@ -150,8 +157,6 @@ public static class ServiceHelper
                 
                 subCategoryCache[rowData.RawSubCategories] = subCategories;
             }
-            //might need mapping and lookup for category
-            //check for duplicates in cache
             var questionData = new Questions()
             {
                 QuestionName = rowData.RawQuestions,
@@ -160,7 +165,7 @@ public static class ServiceHelper
                 YearPeriodNavigation = yearPeriods,
             };
             questions.Add(questionData);
-
+            
             foreach (var choiceList in rowData.RawChoices)
             {
                 choices.Add(new Choices()
@@ -170,6 +175,7 @@ public static class ServiceHelper
                     QuestionsNavigation = questionData
                 });
             }
+            _logger.LogInformation($"{questionData.QuestionName} saved to list" );
         }
 
         return (questions, choices);

@@ -10,13 +10,11 @@ namespace Backend.Services.SubCategory
 {
     public class SubCategoryService : ISubCategoryService
     {
-        public readonly MyDbContext _context;
         public readonly ISubCategoryRepository _repo;
         public readonly IMemoryCache _cache;
 
-        public SubCategoryService(MyDbContext context, ISubCategoryRepository repo, IMemoryCache cache)
+        public SubCategoryService(ISubCategoryRepository repo, IMemoryCache cache)
         {
-            _context = context;
             _repo = repo;
             _cache = cache;
         }
@@ -85,7 +83,7 @@ namespace Backend.Services.SubCategory
             subCategory.CategoryId = dto.CategoryId;
 
             await _repo.UpdataSubCategory(subCategory);
-            await _context.SaveChangesAsync();
+            await _repo.SaveChangesAsync();
             _cache.Remove(CacheKeys.SubCategoryAll);
         }
 
@@ -95,7 +93,7 @@ namespace Backend.Services.SubCategory
             if (subCategory == null) throw new Exception("SubCategory does not exist");
 
             await _repo.DeleteSubCategory(subCategory);
-            await _context.SaveChangesAsync();
+            await _repo.SaveChangesAsync();
             _cache.Remove(CacheKeys.SubCategoryAll);
         }
 

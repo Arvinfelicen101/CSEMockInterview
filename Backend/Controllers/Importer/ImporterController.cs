@@ -1,7 +1,6 @@
 using Backend.DTOs.Importer;
 using Backend.Services.Importer;
 using Microsoft.AspNetCore.Mvc;
-using Backend.Models;
 using Backend.Services.YearPeriodManagement;
 
 namespace Backend.Controllers.Importer;
@@ -19,11 +18,15 @@ public class ImporterController : ControllerBase
         _yearPeriodService = yearPeriodService;
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Importer(ImporterDTO xlsx)
+    [HttpPost("Import")]
+    public async Task<IActionResult> Import([FromForm] IFormFile file)
     {
-        await _service.ProcessFileAsync(xlsx);
-        return Ok(new { message = "User created successfully" });
+        if (file == null || file.Length == 0)
+            return BadRequest("File is required.");
+        Console.WriteLine("passing file to service");
+        await _service.ProcessFileAsync(file);
+        Console.WriteLine("File passed to service");
+        return Ok(new { message = "Importer successful" });
     }
 
     [HttpGet]

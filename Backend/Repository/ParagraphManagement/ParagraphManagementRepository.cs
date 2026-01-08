@@ -8,14 +8,10 @@ namespace Backend.Repository.ParagraphManagement;
 public class ParagraphManagementRepository : IParagraphManagementRepository
 {
     private readonly MyDbContext _context;
-    private readonly ILogger<ParagraphManagementRepository> _logger;
-    private readonly IMemoryCache _cache;
 
-    public ParagraphManagementRepository(MyDbContext context, ILogger<ParagraphManagementRepository> logger, IMemoryCache cache)
+    public ParagraphManagementRepository(MyDbContext context, IMemoryCache cache)
     {
         _context = context;
-        _logger = logger;
-        _cache = cache;
     }
 
     public async Task<IEnumerable<Paragraphs>> GetAllAsync()

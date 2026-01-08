@@ -1,12 +1,14 @@
 ﻿using Backend.Context;
 using Backend.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Backend.Repository.ChoicesManagement
 {
     public class ChoicesRepository : IChoicesRepository
     {
-        public readonly MyDbContext _context;
+        private readonly MyDbContext _context;
+        
 
         public ChoicesRepository(MyDbContext context)
         {
@@ -21,9 +23,9 @@ namespace Backend.Repository.ChoicesManagement
         public async Task<bool> HasAnotherCorrectChoiceAsync(int questionId, int excludingChoiceId)
         {
            return await _context.Choice.AnyAsync(c =>
-           c.QuestionId == questionId &&
-           c.Id != excludingChoiceId &&
-           c.IsCorrect);
+               c.QuestionId == questionId &&
+               c.Id != excludingChoiceId &&
+               c.IsCorrect);
         }
 
         public async Task CreateChoicesAsync(Choices choice)
@@ -37,13 +39,9 @@ namespace Backend.Repository.ChoicesManagement
             return await _context.Choice
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
-
         
-
         public async Task<bool> QuestionExistAsync(int id)
         {
-            //var questionExist = await _context.Question.FirstAsync(c => c.Id == id);
-            //return true;
             return await _context.Question.AnyAsync(c => c.Id == id);
         }
 
@@ -57,6 +55,11 @@ namespace Backend.Repository.ChoicesManagement
         {
             _context.Choice.Remove(choice);
             return Task.CompletedTask;
+        }
+        
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }

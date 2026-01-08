@@ -1,9 +1,6 @@
 ﻿using Backend.DTOs.SubCategory;
-using Backend.Repository.SubCategory;
 using Backend.Services.SubCategory;
-using DocumentFormat.OpenXml.Office2010.Drawing;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers.SubCategory

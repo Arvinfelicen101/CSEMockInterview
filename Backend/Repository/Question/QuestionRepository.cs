@@ -1,6 +1,4 @@
-﻿
-
-using Backend.Context;
+﻿using Backend.Context;
 using Backend.DTOs.Choices;
 using Backend.DTOs.Question;
 using Backend.Models;
@@ -62,18 +60,9 @@ namespace Backend.Repository.Question
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<List<QuestionListDTO>> GetAllAsync()
+        public async Task<List<Questions>> GetAllAsync()
         {
-            return await _context.Question
-                .AsNoTracking()
-                .Select(q => new QuestionListDTO
-                {
-                   QuestionName = q.QuestionName,
-                   SubCategoryId = q.SubCategoryId,
-                   ParagraphId = q.ParagraphId,
-                   YearPeriodId= q.YearPeriodId
-                })
-                .ToListAsync();
+            return await _context.Question.ToListAsync();
         }
 
         public async Task<Questions?> FindQuestionByIdAsync(int id)
@@ -95,6 +84,10 @@ namespace Backend.Repository.Question
             return Task.CompletedTask;
         }
 
-       
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+        
     }
 }

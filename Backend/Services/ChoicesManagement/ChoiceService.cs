@@ -1,5 +1,4 @@
-﻿using Backend.Context;
-using Backend.DTOs.Choices;
+﻿using Backend.DTOs.Choices;
 using Backend.Exceptions;
 using Backend.Repository.ChoicesManagement;
 
@@ -8,12 +7,10 @@ namespace Backend.Services.ChoicesManagement
     public class ChoiceService : IChoiceService
     {
         public readonly IChoicesRepository _repo;
-        public readonly MyDbContext _context;
 
-        public ChoiceService(IChoicesRepository repo, MyDbContext context)
+        public ChoiceService(IChoicesRepository repo)
         {
             _repo = repo;
-            _context = context;
         }
         
 
@@ -38,7 +35,7 @@ namespace Backend.Services.ChoicesManagement
             choiceById.IsCorrect = choice.IsCorrect;
            
             await _repo.UpdateChoiceAsync(choiceById);
-            await _context.SaveChangesAsync();
+            await _repo.SaveChangesAsync();
 
         }
 
@@ -50,7 +47,8 @@ namespace Backend.Services.ChoicesManagement
             if (choice == null) throw new NotFoundException(("Choice does not exist"));
 
             await _repo.DeleteChoiceAsync(choice);
-            await  _context.SaveChangesAsync();
+            await _repo.SaveChangesAsync();
         }
+        
     }
 }

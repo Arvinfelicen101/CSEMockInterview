@@ -8,5 +8,6 @@ namespace Backend.Repository.ChoicesManagement
         Task<Choices?> FindChoiceById(int id);
         Task UpdateChoiceAsync(Choices choice);
         Task DeleteChoiceAsync(Choices choice);
+        Task SaveChangesAsync();
     }
 }

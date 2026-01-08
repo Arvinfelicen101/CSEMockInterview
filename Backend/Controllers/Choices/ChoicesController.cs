@@ -15,13 +15,7 @@ namespace Backend.Controllers.Choices
         {
             _service = service;
         }
-
-        //[HttpPost("AddChoice")]
-        //public Task<IActionResult> CreateChoice(ChoiceDTO choice)
-        //{
-
-        //}
-
+        
         [HttpPut("{id:int}")]
         [Authorize]
         public async Task <IActionResult> UpdateChoice(int id, ChoiceUpdateDTO dto)

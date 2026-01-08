@@ -4,7 +4,6 @@ using Backend.Repository.Question;
 using Backend.Exceptions;
 using Microsoft.Extensions.Caching.Memory;
 using Backend.Services.Question.QuestionValidator;
-using Backend.Context;
 
 namespace Backend.Services.Question
 {
@@ -13,14 +12,12 @@ namespace Backend.Services.Question
         private readonly IQuestionRepository _repo;
         private readonly IMemoryCache _cache;
         private readonly IQuestionValidator _validator;
-        private readonly MyDbContext _context;
 
-        public QuestionService(IQuestionRepository repo, IMemoryCache cache, IQuestionValidator validator, MyDbContext context)
+        public QuestionService(IQuestionRepository repo, IMemoryCache cache, IQuestionValidator validator)
         {
             _repo = repo;
             _cache = cache;
             _validator = validator;
-            _context = context;
         }
         public async Task CreateQuestionAsync(QuestionCreateDTO question)
         {
@@ -55,36 +52,27 @@ namespace Backend.Services.Question
             }
 
             await _repo.AddQuestionAsync(questionInfo);
-            await _context.SaveChangesAsync();
+            await _repo.SaveChangesAsync();
             _cache.Remove(CacheKeys.QuestionsAll);
         }
 
         public async Task<QuestionReadDTO> GetQuestionByIdAsync(int id)
         {
-            if (id <= 0)
-                throw new BadRequestException("Invalid ID");
-
+            if (id <= 0) throw new BadRequestException("Invalid ID");
             var question = await _repo.GetQuestionByIdAsync(id);
-
-            if (question == null)
-                throw new NotFoundException($"Question with ID {id} not found");
-
+            if (question == null) throw new NotFoundException($"Question with ID {id} not found");
             return question;
         }
 
-        public async Task<List<QuestionListDTO>> GetAllAsync()
+        public async Task<List<Questions>> GetAllAsync()
         {
-            if (_cache.TryGetValue(CacheKeys.QuestionsAll, out List<QuestionListDTO>? cached))
-                return cached!;
-
+            if (_cache.TryGetValue(CacheKeys.QuestionsAll, out List<Questions>? cached)) return cached!;
             var result = await _repo.GetAllAsync();
-
             _cache.Set(
                 CacheKeys.QuestionsAll,
                 result,
                 TimeSpan.FromMinutes(10)
                 );
-
             return result;      
         }
 
@@ -109,7 +97,7 @@ namespace Backend.Services.Question
 
 
             await _repo.UpdateQuestion(questionById);
-            await _context.SaveChangesAsync();
+            await _repo.SaveChangesAsync();
             _cache.Remove(CacheKeys.QuestionsAll);
 
         }
@@ -120,7 +108,7 @@ namespace Backend.Services.Question
             if (question == null) throw new NotFoundException("Question does not exist.");
 
             await _repo.DeleteQuestion(question);
-            await _context.SaveChangesAsync();
+            await _repo.SaveChangesAsync();
             _cache.Remove(CacheKeys.QuestionsAll);
         }
 
