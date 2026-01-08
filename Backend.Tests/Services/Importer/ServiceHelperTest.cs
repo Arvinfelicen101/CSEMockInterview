@@ -75,6 +75,15 @@ public class ServiceHelperTest
                     Id = 1,
                     SubCategoryName = "R.A"
                 }
+            },
+            questionsCache = new List<Questions>()
+            {
+                new Questions()
+                {
+                    QuestionName = "What is 1 + 1?",
+                    SubCategoryId = 3,
+                    YearPeriodId = 1,
+                }
             }
         };
         
@@ -85,15 +94,15 @@ public class ServiceHelperTest
         var correctChoice = result.Item2.First(c => c.IsCorrect);
         var wrongChoice = result.Item2.First(c => !c.IsCorrect);
 
+        //Assert
         Assert.Equal("Bongbong Marcos", correctChoice.ChoiceText);
         Assert.True(correctChoice.IsCorrect);
-
         Assert.Equal("Rodrigo Duterte", wrongChoice.ChoiceText);
         Assert.False(wrongChoice.IsCorrect);
         Assert.Equal(1, rawData.Count);
-        //Assert
         Assert.NotEqual(2, result.Item1.Count);
         Assert.NotEqual(1, result.Item2.Count);
+       
     }
     
 }
