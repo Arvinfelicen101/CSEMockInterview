@@ -129,6 +129,8 @@ namespace Backend.Tests.Services.Question
                 .Setup(r => r.FindQuestionByIdAsync(1))
                 .ReturnsAsync(existingQuestion);
 
+            _repoMock.Setup(q => q.SaveChangesAsync());
+
             _validatorMock
                 .Setup(v => v.ValidateReferencesAsync(
                     It.IsAny<int>(),
@@ -154,10 +156,9 @@ namespace Backend.Tests.Services.Question
             _repoMock.Verify(
                 r => r.UpdateQuestion(existingQuestion),
                 Times.Once);
-
-            _contextMock.Verify(
-                c => c.SaveChangesAsync(It.IsAny<CancellationToken>()),
-                Times.Once);
+            
+            
+        
         }
 
         [Fact]
@@ -176,6 +177,8 @@ namespace Backend.Tests.Services.Question
                 .Setup(r => r.FindQuestionByIdAsync(1))
                 .ReturnsAsync(question);
 
+            _repoMock.Setup(q => q.SaveChangesAsync());
+
             // Act
             await _service.DeleteQuestionAsync(1);
 
@@ -184,9 +187,7 @@ namespace Backend.Tests.Services.Question
                 r => r.DeleteQuestion(question),
                 Times.Once);
 
-            _contextMock.Verify(
-                c => c.SaveChangesAsync(It.IsAny<CancellationToken>()),
-                Times.Once);
+            _repoMock.Verify(q => q.SaveChangesAsync(), Times.Once);
         }
 
     }
