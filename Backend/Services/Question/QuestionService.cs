@@ -64,9 +64,9 @@ namespace Backend.Services.Question
             return question;
         }
 
-        public async Task<List<QuestionListDTO>> GetAllAsync()
+        public async Task<List<Questions>> GetAllAsync()
         {
-            if (_cache.TryGetValue(CacheKeys.QuestionsAll, out List<QuestionListDTO>? cached)) return cached!;
+            if (_cache.TryGetValue(CacheKeys.QuestionsAll, out List<Questions>? cached)) return cached!;
             var result = await _repo.GetAllAsync();
             _cache.Set(
                 CacheKeys.QuestionsAll,
