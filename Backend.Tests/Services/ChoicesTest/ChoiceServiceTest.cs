@@ -18,8 +18,7 @@ namespace Backend.Tests.Services.ChoicesTest
             _contextMock = new Mock<MyDbContext>();
 
             _service = new ChoiceService(
-                _repoMock.Object,
-                _contextMock.Object
+                _repoMock.Object
                 );
         }
 
