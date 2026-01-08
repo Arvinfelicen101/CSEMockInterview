@@ -156,9 +156,6 @@ namespace Backend.Tests.Services.Question
             _repoMock.Verify(
                 r => r.UpdateQuestion(existingQuestion),
                 Times.Once);
-            
-            
-        
         }
 
         [Fact]
