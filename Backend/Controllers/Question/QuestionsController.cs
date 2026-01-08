@@ -1,6 +1,7 @@
 ﻿using Backend.DTOs.Question;
 using Backend.Repository.Question;
 using Backend.Services.Question;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,7 @@ namespace Backend.Controllers.Question
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddQuestion(QuestionCreateDTO question)
         {
             await _service.CreateQuestionAsync(question);
@@ -25,6 +27,7 @@ namespace Backend.Controllers.Question
         }
 
         [HttpGet("{id:int}")]
+        [Authorize]
         public async Task<IActionResult> GetQuestionById(int id)
         {
             var question = await _service.GetQuestionByIdAsync(id);
@@ -32,6 +35,7 @@ namespace Backend.Controllers.Question
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllQuestions()
         {
             var questions = await _service.GetAllAsync();
@@ -39,7 +43,7 @@ namespace Backend.Controllers.Question
         }
 
         [HttpPatch("{id:int}")]
-
+        [Authorize]
         public async Task<IActionResult> UpdateQuestion(int Id, QuestionUpdateDTO question)
         {
             await _service.UpdateQuestionAsync(Id, question);
@@ -47,6 +51,7 @@ namespace Backend.Controllers.Question
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize]
         public async Task<IActionResult> DeleteQuestion(int id)
         {
             await _service.DeleteQuestionAsync(id);

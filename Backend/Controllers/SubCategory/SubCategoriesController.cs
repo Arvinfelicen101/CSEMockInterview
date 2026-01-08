@@ -1,5 +1,6 @@
 ﻿using Backend.DTOs.SubCategory;
 using Backend.Services.SubCategory;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers.SubCategory
@@ -16,6 +17,7 @@ namespace Backend.Controllers.SubCategory
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddSubCategory(SubCategoryCreateDTO subcategoryDto)
         {
             await _service.CreateSubCategoryAsync(subcategoryDto);
@@ -23,6 +25,7 @@ namespace Backend.Controllers.SubCategory
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllSubCategories()
         {
            var subcategories = await _service.GetAllAsync();
@@ -30,6 +33,7 @@ namespace Backend.Controllers.SubCategory
         }
 
         [HttpPut("{id:int}")]
+        [Authorize]
         public async Task<IActionResult> UpdateSubCategory(int id,  SubCategoryUpdateDTO subcategoryDto)
         {
             await _service.UpdateSubCategoryAsync(id, subcategoryDto);
@@ -37,6 +41,7 @@ namespace Backend.Controllers.SubCategory
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize]
         public async Task<IActionResult> DeleteSubCategory(int id)
         {
             await _service.DeleteSubCategoryAsync(id);

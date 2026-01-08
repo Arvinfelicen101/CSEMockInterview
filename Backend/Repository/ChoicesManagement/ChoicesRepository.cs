@@ -43,16 +43,16 @@ namespace Backend.Repository.ChoicesManagement
             return await _context.Question.AnyAsync(c => c.Id == id);
         }
 
-        public async Task UpdateChoiceAsync(Choices choice)
+        public Task UpdateChoiceAsync(Choices choice)
         {
             _context.Choice.Update(choice);
-            await Task.CompletedTask;
+            return Task.CompletedTask;
         }
 
-        public async Task DeleteChoiceAsync(Choices choice)
+        public Task DeleteChoiceAsync(Choices choice)
         {
             _context.Choice.Remove(choice);
-            await Task.CompletedTask;
+            return Task.CompletedTask;
         }
         
         public async Task SaveChangesAsync()

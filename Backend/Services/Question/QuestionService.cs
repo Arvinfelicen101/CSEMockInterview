@@ -96,7 +96,7 @@ namespace Backend.Services.Question
             questionById.ParagraphId = question.ParagraphId;
 
 
-            _repo.UpdateQuestion(questionById);
+            await _repo.UpdateQuestion(questionById);
             await _repo.SaveChangesAsync();
             _cache.Remove(CacheKeys.QuestionsAll);
 
@@ -107,7 +107,7 @@ namespace Backend.Services.Question
             var question = await _repo.FindQuestionByIdAsync(id);
             if (question == null) throw new NotFoundException("Question does not exist.");
 
-            _repo.DeleteQuestion(question);
+            await _repo.DeleteQuestion(question);
             await _repo.SaveChangesAsync();
             _cache.Remove(CacheKeys.QuestionsAll);
         }

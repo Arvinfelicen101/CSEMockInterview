@@ -84,7 +84,7 @@ namespace Backend.Services.SubCategory
             subCategory.SubCategoryName = dto.SubCategoryName;
             subCategory.CategoryId = dto.CategoryId;
 
-            _repo.UpdataSubCategory(subCategory);
+            await _repo.UpdataSubCategory(subCategory);
             await _context.SaveChangesAsync();
             _cache.Remove(CacheKeys.SubCategoryAll);
         }
@@ -94,7 +94,7 @@ namespace Backend.Services.SubCategory
             var subCategory = await _repo.FindByIdAsync(id);
             if (subCategory == null) throw new Exception("SubCategory does not exist");
 
-            _repo.DeleteSubCategory(subCategory);
+            await _repo.DeleteSubCategory(subCategory);
             await _context.SaveChangesAsync();
             _cache.Remove(CacheKeys.SubCategoryAll);
         }
