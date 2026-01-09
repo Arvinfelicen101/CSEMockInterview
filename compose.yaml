@@ -1,0 +1,13 @@
+﻿services:
+  csemockinterview:
+    image: csemockinterview
+    build:
+      context: .
+      dockerfile: CSEMockInterview/Dockerfile
+
+  csemockinterview-1:
+    image: csemockinterview-1
+    build:
+      context: .
+      dockerfile: CSEMockInterview/Dockerfile
+
